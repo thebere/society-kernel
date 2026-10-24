@@ -1,5 +1,3 @@
-// pronome.ts
-
 import type { RoleId } from "./types";
 
 

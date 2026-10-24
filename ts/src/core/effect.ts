@@ -1,4 +1,3 @@
-
 import { type Activation, activation } from "./activation";
 import { Pronome } from "./pronome";
 import type { AgencyId, ConceptId, OperationId, RoleId } from "./types";
@@ -28,7 +27,7 @@ type InvokeIsonome = {
   strength: Activation;
 }
 
-type ActivateAgency = {
+export type ActivateAgency = {
   action: 'activate_agency';
   agencyId: AgencyId;
   amount: Activation;
@@ -86,6 +85,9 @@ function add(a: Activation, b: Activation): Activation {
 function subtract(a: Activation, b: Activation): Activation {
   return max(0, a - b);
 };
+
+
+
 
 
 
