@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { activation } from './activation';
-import { agencies as configuredAgencies, createEmptyOperations, type Agency } from './agency';
+import { agencies as configuredAgencies, type Agency } from './agency';
 import { applyEffect } from './effect';
 import { propagation } from './propagation';
 import type { Polyneme } from './types';
@@ -17,7 +17,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(0.8),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     // Propagation contributes activation even below the execution threshold.
@@ -40,7 +40,7 @@ describe('polyneme propagation', () => {
         sensitivities: {
           SHIPMENT_DELAY: activation(0.8),
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
       {
         id: 'LOGISTICS_ASSESSMENT',
@@ -48,7 +48,7 @@ describe('polyneme propagation', () => {
         sensitivities: {
           SHIPMENT_DELAY: activation(0.4),
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
     ];
 
@@ -74,7 +74,7 @@ describe('polyneme propagation', () => {
         id: 'SUPPLIER_ASSESSMENT',
         threshold: activation(1),
         sensitivities,
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       }];
 
     expect(propagation(polyneme, agencies)).toStrictEqual([]);
@@ -91,7 +91,7 @@ describe('polyneme propagation', () => {
         sensitivities: {
           SHIPMENT_DELAY: activation(0.8),
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
       {
         id: 'RISK_ASSESSMENT',
@@ -99,7 +99,7 @@ describe('polyneme propagation', () => {
         sensitivities: {
           ALTERNATIVE_SUPPLIER_AVAILABLE: activation(1),
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
     ];
 
@@ -122,7 +122,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(0.8),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     const effects = propagation(polyneme, agencies);
@@ -146,7 +146,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(sensitivity),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     const effects = propagation(polyneme, agencies);
@@ -166,7 +166,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(0.8),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     expect(propagation(polyneme, agencies)).toStrictEqual([]);
@@ -187,7 +187,7 @@ describe('polyneme propagation', () => {
         SHIPMENT_DELAY: activation(1),
         INVENTORY_RISK: activation(1),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     const effects = polynemes.flatMap(polyneme => propagation(polyneme, agencies));
@@ -213,7 +213,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(0.8),
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
     const original: WorkspaceState = {
       ...createEmptyWorkspace(),
@@ -248,7 +248,7 @@ describe('polyneme propagation', () => {
       sensitivities: {
         SHIPMENT_DELAY: activation(0.8)
       },
-      operations: createEmptyOperations(),
+      supportedOperations: [],
     }];
 
     const effects = original.polynemes.flatMap(polyneme => propagation(polyneme, agencies));
@@ -276,7 +276,7 @@ describe('polyneme propagation', () => {
         sensitivities: {
           SHIPMENT_DELAY: activation(0.8)
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
       {
         id: 'LOGISTICS_ASSESSMENT',
@@ -284,11 +284,11 @@ describe('polyneme propagation', () => {
         sensitivities: {
           SHIPMENT_DELAY: activation(0.4)
         },
-        operations: createEmptyOperations(),
+        supportedOperations: [],
       },
     ];
     const polynemeSnapshot = structuredClone(polyneme);
-    const agenciesSnapshot = cloneAgencyConfiguration(agencies);
+    const agenciesSnapshot = structuredClone(agencies);
 
     const first = propagation(polyneme, agencies);
     const second = propagation(polyneme, agencies);
@@ -311,7 +311,7 @@ describe('supply-chain disruption propagation integration', () => {
     ];
     const original: WorkspaceState = { ...createEmptyWorkspace(), polynemes };
     const originalSnapshot = structuredClone(original);
-    const agenciesSnapshot = cloneAgencyConfiguration(configuredAgencies);
+    const agenciesSnapshot = structuredClone(configuredAgencies);
     const effects = original.polynemes.flatMap(polyneme => propagation(polyneme, configuredAgencies));
     expect(original).toStrictEqual(originalSnapshot);
     const next = effects.reduce((workspace, effect) => applyEffect(workspace, effect), original);
@@ -348,7 +348,3 @@ describe('supply-chain disruption propagation integration', () => {
     expect(next.agencyActivations.some(a => a.agencyId === 'SUPPLIER_ASSESSMENT')).toBe(false);
   });
 });
-
-function cloneAgencyConfiguration(configuration: readonly Agency[]) {
-  return configuration.map(agency => ({ ...agency, sensitivities: { ...agency.sensitivities }, operations: { ...agency.operations } }));
-}
