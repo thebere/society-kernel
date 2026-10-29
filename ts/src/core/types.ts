@@ -54,7 +54,7 @@ export const operationIds = [
   'COMPARE',
   'ESCALATE',
   'RESOLVE',
-] as const;
+] ;
 
 export type OperationId = (typeof operationIds)[number];
 

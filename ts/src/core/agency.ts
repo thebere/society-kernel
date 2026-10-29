@@ -1,15 +1,30 @@
 import { type Activation, activation } from "./activation";
-import type { AgencyId, ConceptId } from "./types";
+import type { AgencyId, ConceptId, OperationId } from "./types";
 
 type Sensitivities = Readonly<
   Partial<Record<ConceptId, Activation>>
 >;
 
+type OperationHandler = () => void;
+
+type Operations = Readonly<Partial<Record<OperationId, OperationHandler>>>;
+
 export type Agency = {
   id: AgencyId;
   threshold: Activation;
   sensitivities: Sensitivities;
+  operations: Operations;
 };
+
+export function createEmptyOperations(): Operations {
+  return {
+    VERIFY: () => {},
+    CLASSIFY: () => {},
+    COMPARE: () => {},
+    ESCALATE: () => {},
+    RESOLVE: () => {},
+  }
+}
 
 
 export const agencies: readonly Agency[] = [
@@ -22,6 +37,7 @@ export const agencies: readonly Agency[] = [
       QUALITY_RISK: activation(0.6),
       COMPLIANCE_UNVERIFIED: activation(0.4),
     },
+    operations: {VERIFY: () => {}, CLASSIFY: () => {}, COMPARE: () => {}},
   },
   {
     id: "INVENTORY_ASSESSMENT",
@@ -32,6 +48,7 @@ export const agencies: readonly Agency[] = [
       PRODUCTION_IMPACT: activation(0.5),
       HIGH_PRIORITY_ORDER: activation(0.3),
     },
+    operations: {VERIFY: () => {}, COMPARE: () => {}},
   },
   {
     id: "LOGISTICS_ASSESSMENT",
@@ -42,6 +59,7 @@ export const agencies: readonly Agency[] = [
       INVENTORY_RISK: activation(0.4),
       HIGH_PRIORITY_ORDER: activation(0.2),
     },
+    operations: {VERIFY: () => {}, CLASSIFY: () => {}, COMPARE: () => {}, ESCALATE: () => {}},
   },
   {
     id: "PRODUCTION_ASSESSMENT",
@@ -52,6 +70,7 @@ export const agencies: readonly Agency[] = [
       HIGH_PRIORITY_ORDER: activation(0.4),
       SHIPMENT_DELAY: activation(0.4),
     },
+    operations: {VERIFY: () => {}, COMPARE: () => {}, ESCALATE: () => {}},
   },
   {
     id: "PROCUREMENT_STRATEGY",
@@ -62,6 +81,7 @@ export const agencies: readonly Agency[] = [
       REPEAT_DISRUPTION: activation(0.7),
       INVENTORY_RISK: activation(0.4),
     },
+    operations: {COMPARE: () => {}, ESCALATE: () => {}},
   },
   {
     id: "COMPLIANCE_ASSESSMENT",
@@ -72,6 +92,7 @@ export const agencies: readonly Agency[] = [
       ALTERNATIVE_SUPPLIER_AVAILABLE: activation(0.4),
       SUPPLIER_RELIABILITY_RISK: activation(0.3),
     },
+    operations: {VERIFY: () => {}, CLASSIFY: () => {}, ESCALATE: () => {}},
   },
   {
     id: "RISK_ASSESSMENT",
@@ -83,6 +104,7 @@ export const agencies: readonly Agency[] = [
       CUSTOMER_COMMITMENT_RISK: activation(0.6),
       REPEAT_DISRUPTION: activation(0.6),
     },
+    operations: {VERIFY: () => {}, COMPARE: () => {}, ESCALATE: () => {}},
   },
   {
     id: "CUSTOMER_COMMITMENT",
@@ -93,5 +115,6 @@ export const agencies: readonly Agency[] = [
       PRODUCTION_IMPACT: activation(0.6),
       SHIPMENT_DELAY: activation(0.4),
     },
+    operations: {VERIFY: () => {}, COMPARE: () => {}},
   },
 ];

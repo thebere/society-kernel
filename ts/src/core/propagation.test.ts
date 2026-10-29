@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { activation } from './activation';
-import { agencies as configuredAgencies, type Agency } from './agency';
+import { agencies as configuredAgencies, createEmptyOperations, type Agency } from './agency';
 import { applyEffect } from './effect';
 import { propagation } from './propagation';
 import type { Polyneme } from './types';
@@ -14,7 +14,10 @@ describe('polyneme propagation', () => {
     const agencies: Agency[] = [{
       id: 'SUPPLIER_ASSESSMENT',
       threshold: activation(0.9),
-      sensitivities: { SHIPMENT_DELAY: activation(0.8) },
+      sensitivities: {
+        SHIPMENT_DELAY: activation(0.8),
+      },
+      operations: createEmptyOperations(),
     }];
 
     // Propagation contributes activation even below the execution threshold.
@@ -31,8 +34,22 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.5),
     };
     const agencies: Agency[] = [
-      { id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) } },
-      { id: 'LOGISTICS_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.4) } },
+      {
+        id: 'SUPPLIER_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          SHIPMENT_DELAY: activation(0.8),
+        },
+        operations: createEmptyOperations(),
+      },
+      {
+        id: 'LOGISTICS_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          SHIPMENT_DELAY: activation(0.4),
+        },
+        operations: createEmptyOperations(),
+      },
     ];
 
     const effects = propagation(polyneme, agencies);
@@ -52,7 +69,13 @@ describe('polyneme propagation', () => {
     const polyneme: Polyneme = {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.5),
     };
-    const agencies: Agency[] = [{ id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities }];
+    const agencies: Agency[] = [
+      {
+        id: 'SUPPLIER_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities,
+        operations: createEmptyOperations(),
+      }];
 
     expect(propagation(polyneme, agencies)).toStrictEqual([]);
   });
@@ -62,8 +85,22 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.5),
     };
     const agencies: Agency[] = [
-      { id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) } },
-      { id: 'RISK_ASSESSMENT', threshold: activation(1), sensitivities: { ALTERNATIVE_SUPPLIER_AVAILABLE: activation(1) } },
+      {
+        id: 'SUPPLIER_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          SHIPMENT_DELAY: activation(0.8),
+        },
+        operations: createEmptyOperations(),
+      },
+      {
+        id: 'RISK_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          ALTERNATIVE_SUPPLIER_AVAILABLE: activation(1),
+        },
+        operations: createEmptyOperations(),
+      },
     ];
 
     expect(propagation(polyneme, agencies)).toEqual([
@@ -80,7 +117,12 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(strength),
     };
     const agencies: Agency[] = [{
-      id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) },
+      id: 'SUPPLIER_ASSESSMENT',
+      threshold: activation(1),
+      sensitivities: {
+        SHIPMENT_DELAY: activation(0.8),
+      },
+      operations: createEmptyOperations(),
     }];
 
     const effects = propagation(polyneme, agencies);
@@ -99,7 +141,12 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.8),
     };
     const agencies: Agency[] = [{
-      id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(sensitivity) },
+      id: 'SUPPLIER_ASSESSMENT',
+      threshold: activation(1),
+      sensitivities: {
+        SHIPMENT_DELAY: activation(sensitivity),
+      },
+      operations: createEmptyOperations(),
     }];
 
     const effects = propagation(polyneme, agencies);
@@ -114,7 +161,12 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0),
     };
     const agencies: Agency[] = [{
-      id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) },
+      id: 'SUPPLIER_ASSESSMENT',
+      threshold: activation(1),
+      sensitivities: {
+        SHIPMENT_DELAY: activation(0.8),
+      },
+      operations: createEmptyOperations(),
     }];
 
     expect(propagation(polyneme, agencies)).toStrictEqual([]);
@@ -131,7 +183,11 @@ describe('polyneme propagation', () => {
     const agencies: Agency[] = [{
       id: 'SUPPLIER_ASSESSMENT',
       threshold: activation(1),
-      sensitivities: { SHIPMENT_DELAY: activation(1), INVENTORY_RISK: activation(1) },
+      sensitivities: {
+        SHIPMENT_DELAY: activation(1),
+        INVENTORY_RISK: activation(1),
+      },
+      operations: createEmptyOperations(),
     }];
 
     const effects = polynemes.flatMap(polyneme => propagation(polyneme, agencies));
@@ -152,7 +208,12 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.5),
     };
     const agencies: Agency[] = [{
-      id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) },
+      id: 'SUPPLIER_ASSESSMENT',
+      threshold: activation(1),
+      sensitivities: {
+        SHIPMENT_DELAY: activation(0.8),
+      },
+      operations: createEmptyOperations(),
     }];
     const original: WorkspaceState = {
       ...createEmptyWorkspace(),
@@ -182,7 +243,12 @@ describe('polyneme propagation', () => {
     const originalPolynemes = original.polynemes;
     const originalActivations = original.agencyActivations;
     const agencies: Agency[] = [{
-      id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) },
+      id: 'SUPPLIER_ASSESSMENT',
+      threshold: activation(1),
+      sensitivities: {
+        SHIPMENT_DELAY: activation(0.8)
+      },
+      operations: createEmptyOperations(),
     }];
 
     const effects = original.polynemes.flatMap(polyneme => propagation(polyneme, agencies));
@@ -204,11 +270,25 @@ describe('polyneme propagation', () => {
       kind: 'polyneme', conceptId: 'SHIPMENT_DELAY', strength: activation(0.5),
     };
     const agencies: Agency[] = [
-      { id: 'SUPPLIER_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.8) } },
-      { id: 'LOGISTICS_ASSESSMENT', threshold: activation(1), sensitivities: { SHIPMENT_DELAY: activation(0.4) } },
+      {
+        id: 'SUPPLIER_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          SHIPMENT_DELAY: activation(0.8)
+        },
+        operations: createEmptyOperations(),
+      },
+      {
+        id: 'LOGISTICS_ASSESSMENT',
+        threshold: activation(1),
+        sensitivities: {
+          SHIPMENT_DELAY: activation(0.4)
+        },
+        operations: createEmptyOperations(),
+      },
     ];
     const polynemeSnapshot = structuredClone(polyneme);
-    const agenciesSnapshot = structuredClone(agencies);
+    const agenciesSnapshot = cloneAgencyConfiguration(agencies);
 
     const first = propagation(polyneme, agencies);
     const second = propagation(polyneme, agencies);
@@ -231,7 +311,7 @@ describe('supply-chain disruption propagation integration', () => {
     ];
     const original: WorkspaceState = { ...createEmptyWorkspace(), polynemes };
     const originalSnapshot = structuredClone(original);
-    const agenciesSnapshot = structuredClone(configuredAgencies);
+    const agenciesSnapshot = cloneAgencyConfiguration(configuredAgencies);
     const effects = original.polynemes.flatMap(polyneme => propagation(polyneme, configuredAgencies));
     expect(original).toStrictEqual(originalSnapshot);
     const next = effects.reduce((workspace, effect) => applyEffect(workspace, effect), original);
@@ -268,3 +348,7 @@ describe('supply-chain disruption propagation integration', () => {
     expect(next.agencyActivations.some(a => a.agencyId === 'SUPPLIER_ASSESSMENT')).toBe(false);
   });
 });
+
+function cloneAgencyConfiguration(configuration: readonly Agency[]) {
+  return configuration.map(agency => ({ ...agency, sensitivities: { ...agency.sensitivities }, operations: { ...agency.operations } }));
+}
