@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "demo": "tsc -p ts/tsconfig.demo.json && node ts/demo.cjs",
     "test": "vitest"
   },
   "keywords": [],

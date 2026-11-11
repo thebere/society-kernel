@@ -3,6 +3,17 @@ import { Pronome } from "./pronome";
 import type { AgencyId, ConceptId, OperationId, RoleId } from "./types";
 import type { WorkspaceState } from "./workspace";
 
+const pronomeActions = [
+  'bind_pronome',
+  'record_fact',
+  'emit_polyneme',
+  'invoke_isonome',
+  'activate_agency',
+  'inhibit_agency',
+];
+
+export type PronomeAction = (typeof pronomeActions)[number];
+
 type BindPronome<T> = {
   action: 'bind_pronome';
   roleId: RoleId;

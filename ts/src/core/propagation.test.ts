@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { activation } from './activation';
-import { agencies as configuredAgencies, type Agency } from './agency';
+import { type Agency, agencies as configuredAgencies } from './agency';
 import { applyEffect } from './effect';
 import { propagation } from './propagation';
 import type { Polyneme } from './types';
