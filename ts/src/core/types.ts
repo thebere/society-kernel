@@ -59,7 +59,7 @@ export const operationIds = [
 export type OperationId = (typeof operationIds)[number];
 
 export type SituationFeatureId = ConceptId;
-export type KlineId = `kline_${string}`;
+export type KLineId = `kline_${string}`;
 
 // Core substates embellished contracts
 export type AgencyActivation = {
@@ -85,8 +85,8 @@ export type Isonome = {
   strength: Activation;
 };
 
-export type Kline = {
-  id: KlineId;
+export type KLine = {
+  id: KLineId;
   signature: SituationSignature;
 
   agencyActivations: readonly AgencyActivation[];
