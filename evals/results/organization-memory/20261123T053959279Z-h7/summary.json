@@ -1,0 +1,859 @@
+{
+  "status": "completed",
+  "primaryMetric": "task-coverage",
+  "byCondition": {
+    "no-memory": {
+      "caseCount": 32,
+      "meanCoverage": 0.4270833333333333,
+      "medianCoverage": 0.16666666666666666,
+      "minCoverage": 0,
+      "maxCoverage": 1,
+      "meanAgencyExecutions": 1.0625,
+      "meanRecruitedAgencies": 1.0625,
+      "meanSelectedAgencies": 1.0625,
+      "meanDispatchCount": 1.96875,
+      "meanUnnecessaryExecutions": 0.375,
+      "meanRecallComparisons": 0,
+      "meanReinstatementEffects": 0,
+      "perfectCoverageCases": 11,
+      "zeroCoverageCases": 16
+    },
+    "organization-memory": {
+      "caseCount": 32,
+      "meanCoverage": 0.6822916666666666,
+      "medianCoverage": 1,
+      "minCoverage": 0,
+      "maxCoverage": 1,
+      "meanAgencyExecutions": 2.46875,
+      "meanRecruitedAgencies": 2.59375,
+      "meanSelectedAgencies": 2.59375,
+      "meanDispatchCount": 4.6875,
+      "meanUnnecessaryExecutions": 1.03125,
+      "meanRecallComparisons": 8,
+      "meanReinstatementEffects": 2.625,
+      "perfectCoverageCases": 20,
+      "zeroCoverageCases": 8
+    },
+    "direct-routing": {
+      "caseCount": 32,
+      "meanCoverage": 0.8177083333333333,
+      "medianCoverage": 1,
+      "minCoverage": 0,
+      "maxCoverage": 1,
+      "meanAgencyExecutions": 3.1875,
+      "meanRecruitedAgencies": 0,
+      "meanSelectedAgencies": 3.5,
+      "meanDispatchCount": 6.21875,
+      "meanUnnecessaryExecutions": 0.96875,
+      "meanRecallComparisons": 0,
+      "meanReinstatementEffects": 0,
+      "perfectCoverageCases": 24,
+      "zeroCoverageCases": 4
+    },
+    "episode-retrieval": {
+      "caseCount": 32,
+      "meanCoverage": 0.8177083333333333,
+      "medianCoverage": 1,
+      "minCoverage": 0,
+      "maxCoverage": 1,
+      "meanAgencyExecutions": 3.3125,
+      "meanRecruitedAgencies": 0,
+      "meanSelectedAgencies": 3.5625,
+      "meanDispatchCount": 6.34375,
+      "meanUnnecessaryExecutions": 1.34375,
+      "meanRecallComparisons": 8,
+      "meanReinstatementEffects": 0,
+      "perfectCoverageCases": 25,
+      "zeroCoverageCases": 4
+    }
+  },
+  "byClass": {
+    "related": {
+      "no-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.5625,
+        "medianCoverage": 0.75,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 1.25,
+        "meanRecruitedAgencies": 1.25,
+        "meanSelectedAgencies": 1.25,
+        "meanDispatchCount": 2.375,
+        "meanUnnecessaryExecutions": 0.125,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 4,
+        "zeroCoverageCases": 3
+      },
+      "organization-memory": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 3.625,
+        "meanSelectedAgencies": 3.625,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 0.75,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 3.625,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      },
+      "direct-routing": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.75,
+        "meanDispatchCount": 6.75,
+        "meanUnnecessaryExecutions": 0.5,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      },
+      "episode-retrieval": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.625,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 0.75,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      }
+    },
+    "partial": {
+      "no-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.5833333333333333,
+        "medianCoverage": 0.8333333333333333,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 0.875,
+        "meanRecruitedAgencies": 0.875,
+        "meanSelectedAgencies": 0.875,
+        "meanDispatchCount": 1.5,
+        "meanUnnecessaryExecutions": 0.125,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 4,
+        "zeroCoverageCases": 3
+      },
+      "organization-memory": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 2.375,
+        "meanRecruitedAgencies": 2.375,
+        "meanSelectedAgencies": 2.375,
+        "meanDispatchCount": 4.375,
+        "meanUnnecessaryExecutions": 0.5,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 3.25,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      },
+      "direct-routing": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 2.75,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 2.75,
+        "meanDispatchCount": 4.875,
+        "meanUnnecessaryExecutions": 0.25,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      },
+      "episode-retrieval": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.25,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.25,
+        "meanDispatchCount": 5.875,
+        "meanUnnecessaryExecutions": 1.375,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      }
+    },
+    "unrelated": {
+      "no-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.4583333333333333,
+        "medianCoverage": 0.3333333333333333,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 0.75,
+        "meanRecruitedAgencies": 0.75,
+        "meanSelectedAgencies": 0.75,
+        "meanDispatchCount": 1.375,
+        "meanUnnecessaryExecutions": 0.125,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 3,
+        "zeroCoverageCases": 4
+      },
+      "organization-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.4583333333333333,
+        "medianCoverage": 0.3333333333333333,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 0.75,
+        "meanRecruitedAgencies": 0.75,
+        "meanSelectedAgencies": 0.75,
+        "meanDispatchCount": 1.375,
+        "meanUnnecessaryExecutions": 0.125,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 3,
+        "zeroCoverageCases": 4
+      },
+      "direct-routing": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.25,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.75,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 0.5,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      },
+      "episode-retrieval": {
+        "caseCount": 8,
+        "meanCoverage": 1,
+        "medianCoverage": 1,
+        "minCoverage": 1,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.25,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.75,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 0.5,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 8,
+        "zeroCoverageCases": 0
+      }
+    },
+    "misleading": {
+      "no-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.10416666666666666,
+        "medianCoverage": 0,
+        "minCoverage": 0,
+        "maxCoverage": 0.5,
+        "meanAgencyExecutions": 1.375,
+        "meanRecruitedAgencies": 1.375,
+        "meanSelectedAgencies": 1.375,
+        "meanDispatchCount": 2.625,
+        "meanUnnecessaryExecutions": 1.125,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 0,
+        "zeroCoverageCases": 6
+      },
+      "organization-memory": {
+        "caseCount": 8,
+        "meanCoverage": 0.2708333333333333,
+        "medianCoverage": 0.16666666666666666,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 3.625,
+        "meanSelectedAgencies": 3.625,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 2.75,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 3.625,
+        "perfectCoverageCases": 1,
+        "zeroCoverageCases": 4
+      },
+      "direct-routing": {
+        "caseCount": 8,
+        "meanCoverage": 0.2708333333333333,
+        "medianCoverage": 0.16666666666666666,
+        "minCoverage": 0,
+        "maxCoverage": 0.6666666666666666,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.75,
+        "meanDispatchCount": 6.75,
+        "meanUnnecessaryExecutions": 2.625,
+        "meanRecallComparisons": 0,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 0,
+        "zeroCoverageCases": 4
+      },
+      "episode-retrieval": {
+        "caseCount": 8,
+        "meanCoverage": 0.2708333333333333,
+        "medianCoverage": 0.16666666666666666,
+        "minCoverage": 0,
+        "maxCoverage": 1,
+        "meanAgencyExecutions": 3.375,
+        "meanRecruitedAgencies": 0,
+        "meanSelectedAgencies": 3.625,
+        "meanDispatchCount": 6.5,
+        "meanUnnecessaryExecutions": 2.75,
+        "meanRecallComparisons": 8,
+        "meanReinstatementEffects": 0,
+        "perfectCoverageCases": 1,
+        "zeroCoverageCases": 4
+      }
+    }
+  },
+  "pairs": [
+    {
+      "baseline": "no-memory",
+      "meanCoverageDifference": 0.2552083333333333,
+      "meanExecutionDifference": 1.40625,
+      "byClass": {
+        "related": 0.4375,
+        "partial": 0.41666666666666674,
+        "unrelated": 0,
+        "misleading": 0.16666666666666666
+      },
+      "cases": [
+        {
+          "caseId": "related-supply",
+          "coverageDifference": 0.5,
+          "executionDifference": 3
+        },
+        {
+          "caseId": "related-route",
+          "coverageDifference": 0,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "related-source",
+          "coverageDifference": 1,
+          "executionDifference": 3
+        },
+        {
+          "caseId": "related-compliance",
+          "coverageDifference": 1,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "related-customer",
+          "coverageDifference": 1,
+          "executionDifference": 4
+        },
+        {
+          "caseId": "related-stock",
+          "coverageDifference": 0,
+          "executionDifference": 3
+        },
+        {
+          "caseId": "related-promise",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-supplier",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-stock",
+          "coverageDifference": 0,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "partial-route",
+          "coverageDifference": 0,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "partial-source",
+          "coverageDifference": 1,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "partial-quality",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-customer",
+          "coverageDifference": 1,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "partial-production",
+          "coverageDifference": 1,
+          "executionDifference": 4
+        },
+        {
+          "caseId": "partial-priority",
+          "coverageDifference": 0.33333333333333337,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "partial-repeat",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-quality",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-repeat",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-priority",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-repeat-quality",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-quality-priority",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-repeat-priority",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-compound",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "unrelated-urgent-fallback",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-supply",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "misleading-route",
+          "coverageDifference": 1,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "misleading-source",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "misleading-compliance",
+          "coverageDifference": 0,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "misleading-customer",
+          "coverageDifference": 0,
+          "executionDifference": 3
+        },
+        {
+          "caseId": "misleading-stock",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "misleading-promise",
+          "coverageDifference": 0,
+          "executionDifference": 2
+        },
+        {
+          "caseId": "misleading-supplier",
+          "coverageDifference": 0.3333333333333333,
+          "executionDifference": 4
+        }
+      ]
+    },
+    {
+      "baseline": "direct-routing",
+      "meanCoverageDifference": -0.13541666666666663,
+      "meanExecutionDifference": -0.71875,
+      "byClass": {
+        "related": 0,
+        "partial": 0,
+        "unrelated": -0.5416666666666667,
+        "misleading": 0
+      },
+      "cases": [
+        {
+          "caseId": "related-supply",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-route",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "related-source",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "related-compliance",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-customer",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "related-stock",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-promise",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "related-supplier",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-stock",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "partial-route",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "partial-source",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "partial-quality",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "partial-customer",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-production",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "partial-priority",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "partial-repeat",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-quality",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "unrelated-repeat",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-priority",
+          "coverageDifference": -0.33333333333333337,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-repeat-quality",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "unrelated-quality-priority",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-repeat-priority",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-compound",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-urgent-fallback",
+          "coverageDifference": -1,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "misleading-supply",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-route",
+          "coverageDifference": 1,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "misleading-source",
+          "coverageDifference": -0.3333333333333333,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "misleading-compliance",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-customer",
+          "coverageDifference": 0,
+          "executionDifference": 1
+        },
+        {
+          "caseId": "misleading-stock",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-promise",
+          "coverageDifference": -0.6666666666666666,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "misleading-supplier",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        }
+      ]
+    },
+    {
+      "baseline": "episode-retrieval",
+      "meanCoverageDifference": -0.13541666666666663,
+      "meanExecutionDifference": -0.84375,
+      "byClass": {
+        "related": 0,
+        "partial": 0,
+        "unrelated": -0.5416666666666667,
+        "misleading": 0
+      },
+      "cases": [
+        {
+          "caseId": "related-supply",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-route",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-source",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-compliance",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-customer",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-stock",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-promise",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "related-supplier",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-stock",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "partial-route",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "partial-source",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "partial-quality",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "partial-customer",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "partial-production",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-priority",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "partial-repeat",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-quality",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "unrelated-repeat",
+          "coverageDifference": 0,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-priority",
+          "coverageDifference": -0.33333333333333337,
+          "executionDifference": -1
+        },
+        {
+          "caseId": "unrelated-repeat-quality",
+          "coverageDifference": 0,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "unrelated-quality-priority",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-repeat-priority",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-compound",
+          "coverageDifference": -1,
+          "executionDifference": -4
+        },
+        {
+          "caseId": "unrelated-urgent-fallback",
+          "coverageDifference": -1,
+          "executionDifference": -2
+        },
+        {
+          "caseId": "misleading-supply",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-route",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-source",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-compliance",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-customer",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-stock",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-promise",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        },
+        {
+          "caseId": "misleading-supplier",
+          "coverageDifference": 0,
+          "executionDifference": 0
+        }
+      ]
+    }
+  ],
+  "evidenceStatus": "mixed",
+  "interpretation": "Mixed under protocol v1: organization memory improved mean task coverage over no memory, but did not establish a consistent quality-and-cost advantage over the declared alternatives."
+}

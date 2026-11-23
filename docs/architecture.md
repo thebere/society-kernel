@@ -143,7 +143,7 @@ The derivation does not validate the current capability configuration. It preser
 
 Reinstatement stays outside `runCycle()` and its causal trace. The returned Effects expose the memory contributions, but the existing cycle trace records only subsequent propagation, Effect application, recruitment, and dispatch. There is no additional trace framework or hidden memory schedule.
 
-Correctness and integration tests operationalize H6: memory can influence current organization without forcing the stored coalition. They establish no comparative benefit under H7 and do not investigate H8 negative transfer; zero-overlap and inhibition checks verify mechanism semantics only.
+Correctness and integration tests operationalize H6: memory can influence current organization without forcing the stored coalition. They do not themselves establish comparative benefit or investigate H8 negative transfer; zero-overlap and inhibition checks verify mechanism semantics only. The first H7 comparison uses this unchanged mechanism; its scoped, mixed evidence is recorded in the [results index](../evals/results/README.md).
 
 ## Verification and use
 

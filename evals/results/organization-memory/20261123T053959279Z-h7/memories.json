@@ -1,0 +1,893 @@
+{
+  "bank": {
+    "klines": [
+      {
+        "id": "kline_train-supply",
+        "signature": {
+          "featureIds": [
+            "INVENTORY_RISK",
+            "SUPPLIER_RELIABILITY_RISK",
+            "PRODUCTION_IMPACT"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "SUPPLIER_ASSESSMENT",
+            "activation": 0.81
+          },
+          {
+            "agencyId": "INVENTORY_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "PRODUCTION_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "PROCUREMENT_STRATEGY",
+            "activation": 0.99
+          },
+          {
+            "agencyId": "RISK_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "CUSTOMER_COMMITMENT",
+            "activation": 0.54
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-route",
+        "signature": {
+          "featureIds": [
+            "SHIPMENT_DELAY",
+            "INVENTORY_RISK",
+            "ROUTE_DISRUPTION"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "INVENTORY_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "LOGISTICS_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "PRODUCTION_ASSESSMENT",
+            "activation": 0.99
+          },
+          {
+            "agencyId": "RISK_ASSESSMENT",
+            "activation": 0.63
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-source",
+        "signature": {
+          "featureIds": [
+            "SUPPLIER_RELIABILITY_RISK",
+            "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "COMPLIANCE_UNVERIFIED"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "SUPPLIER_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "PROCUREMENT_STRATEGY",
+            "activation": 1
+          },
+          {
+            "agencyId": "COMPLIANCE_ASSESSMENT",
+            "activation": 1
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-compliance",
+        "signature": {
+          "featureIds": [
+            "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "COMPLIANCE_UNVERIFIED"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "PROCUREMENT_STRATEGY",
+            "activation": 0.81
+          },
+          {
+            "agencyId": "COMPLIANCE_ASSESSMENT",
+            "activation": 1
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-customer",
+        "signature": {
+          "featureIds": [
+            "PRODUCTION_IMPACT",
+            "CUSTOMER_COMMITMENT_RISK"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "INVENTORY_ASSESSMENT",
+            "activation": 0.45
+          },
+          {
+            "agencyId": "PRODUCTION_ASSESSMENT",
+            "activation": 0.9
+          },
+          {
+            "agencyId": "RISK_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "CUSTOMER_COMMITMENT",
+            "activation": 1
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-stock",
+        "signature": {
+          "featureIds": [
+            "INVENTORY_RISK",
+            "PRODUCTION_IMPACT"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "INVENTORY_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "PRODUCTION_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "RISK_ASSESSMENT",
+            "activation": 1
+          },
+          {
+            "agencyId": "CUSTOMER_COMMITMENT",
+            "activation": 0.54
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-promise",
+        "signature": {
+          "featureIds": [
+            "ROUTE_DISRUPTION",
+            "CUSTOMER_COMMITMENT_RISK"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "LOGISTICS_ASSESSMENT",
+            "activation": 0.81
+          },
+          {
+            "agencyId": "CUSTOMER_COMMITMENT",
+            "activation": 0.81
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      },
+      {
+        "id": "kline_train-supplier",
+        "signature": {
+          "featureIds": [
+            "SHIPMENT_DELAY",
+            "SUPPLIER_RELIABILITY_RISK"
+          ]
+        },
+        "agencyActivations": [
+          {
+            "agencyId": "SUPPLIER_ASSESSMENT",
+            "activation": 0.81
+          },
+          {
+            "agencyId": "INVENTORY_ASSESSMENT",
+            "activation": 0.54
+          },
+          {
+            "agencyId": "LOGISTICS_ASSESSMENT",
+            "activation": 0.9
+          },
+          {
+            "agencyId": "PROCUREMENT_STRATEGY",
+            "activation": 0.63
+          }
+        ],
+        "roleIds": [
+          "SUPPLIER",
+          "SHIPMENT",
+          "FACILITY",
+          "PURCHASE_ORDER",
+          "CUSTOMER"
+        ],
+        "operationIds": [
+          "VERIFY",
+          "COMPARE"
+        ],
+        "utility": 1
+      }
+    ],
+    "episodes": [
+      {
+        "id": "kline_train-supply",
+        "signature": {
+          "featureIds": [
+            "INVENTORY_RISK",
+            "SUPPLIER_RELIABILITY_RISK",
+            "PRODUCTION_IMPACT"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": true,
+            "stockDays": 1,
+            "demandDays": 3,
+            "productionAtRisk": true,
+            "routeBlocked": false,
+            "alternativeRoute": false,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": true
+          },
+          "concepts": [
+            {
+              "id": "SUPPLIER_RELIABILITY_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "INVENTORY_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "PRODUCTION_IMPACT",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-supply_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-supply_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-supply_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-supply_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-supply_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "SUPPLIER_ASSESSMENT",
+            "PROCUREMENT_STRATEGY",
+            "INVENTORY_ASSESSMENT",
+            "PRODUCTION_ASSESSMENT",
+            "RISK_ASSESSMENT",
+            "CUSTOMER_COMMITMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-route",
+        "signature": {
+          "featureIds": [
+            "SHIPMENT_DELAY",
+            "INVENTORY_RISK",
+            "ROUTE_DISRUPTION"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": false,
+            "stockDays": 1,
+            "demandDays": 3,
+            "productionAtRisk": false,
+            "routeBlocked": true,
+            "alternativeRoute": true,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": false
+          },
+          "concepts": [
+            {
+              "id": "SHIPMENT_DELAY",
+              "strength": 0.9
+            },
+            {
+              "id": "ROUTE_DISRUPTION",
+              "strength": 0.9
+            },
+            {
+              "id": "INVENTORY_RISK",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-route_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-route_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-route_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-route_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-route_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "INVENTORY_ASSESSMENT",
+            "LOGISTICS_ASSESSMENT",
+            "PRODUCTION_ASSESSMENT",
+            "RISK_ASSESSMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-source",
+        "signature": {
+          "featureIds": [
+            "SUPPLIER_RELIABILITY_RISK",
+            "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "COMPLIANCE_UNVERIFIED"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": true,
+            "stockDays": 10,
+            "demandDays": 3,
+            "productionAtRisk": false,
+            "routeBlocked": false,
+            "alternativeRoute": false,
+            "alternateSupplier": true,
+            "complianceRecord": true,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": false
+          },
+          "concepts": [
+            {
+              "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+              "strength": 0.9
+            },
+            {
+              "id": "SUPPLIER_RELIABILITY_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "COMPLIANCE_UNVERIFIED",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-source_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-source_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-source_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-source_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-source_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "PROCUREMENT_STRATEGY",
+            "COMPLIANCE_ASSESSMENT",
+            "SUPPLIER_ASSESSMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-compliance",
+        "signature": {
+          "featureIds": [
+            "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "COMPLIANCE_UNVERIFIED"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": false,
+            "stockDays": 10,
+            "demandDays": 3,
+            "productionAtRisk": false,
+            "routeBlocked": false,
+            "alternativeRoute": false,
+            "alternateSupplier": true,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": false
+          },
+          "concepts": [
+            {
+              "id": "COMPLIANCE_UNVERIFIED",
+              "strength": 0.9
+            },
+            {
+              "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-compliance_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-compliance_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-compliance_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-compliance_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-compliance_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "COMPLIANCE_ASSESSMENT",
+            "PROCUREMENT_STRATEGY"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-customer",
+        "signature": {
+          "featureIds": [
+            "PRODUCTION_IMPACT",
+            "CUSTOMER_COMMITMENT_RISK"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": false,
+            "stockDays": 10,
+            "demandDays": 3,
+            "productionAtRisk": true,
+            "routeBlocked": false,
+            "alternativeRoute": false,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": true,
+            "reserveStock": true
+          },
+          "concepts": [
+            {
+              "id": "CUSTOMER_COMMITMENT_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "PRODUCTION_IMPACT",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-customer_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-customer_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-customer_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-customer_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-customer_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "RISK_ASSESSMENT",
+            "CUSTOMER_COMMITMENT",
+            "INVENTORY_ASSESSMENT",
+            "PRODUCTION_ASSESSMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-stock",
+        "signature": {
+          "featureIds": [
+            "INVENTORY_RISK",
+            "PRODUCTION_IMPACT"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": false,
+            "stockDays": 1,
+            "demandDays": 3,
+            "productionAtRisk": true,
+            "routeBlocked": false,
+            "alternativeRoute": false,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": true
+          },
+          "concepts": [
+            {
+              "id": "INVENTORY_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "PRODUCTION_IMPACT",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-stock_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-stock_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-stock_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-stock_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-stock_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "INVENTORY_ASSESSMENT",
+            "PRODUCTION_ASSESSMENT",
+            "RISK_ASSESSMENT",
+            "CUSTOMER_COMMITMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-promise",
+        "signature": {
+          "featureIds": [
+            "ROUTE_DISRUPTION",
+            "CUSTOMER_COMMITMENT_RISK"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": false,
+            "stockDays": 10,
+            "demandDays": 3,
+            "productionAtRisk": false,
+            "routeBlocked": true,
+            "alternativeRoute": true,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": true,
+            "reserveStock": false
+          },
+          "concepts": [
+            {
+              "id": "ROUTE_DISRUPTION",
+              "strength": 0.9
+            },
+            {
+              "id": "CUSTOMER_COMMITMENT_RISK",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-promise_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-promise_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-promise_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-promise_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-promise_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "LOGISTICS_ASSESSMENT",
+            "CUSTOMER_COMMITMENT"
+          ]
+        }
+      },
+      {
+        "id": "kline_train-supplier",
+        "signature": {
+          "featureIds": [
+            "SHIPMENT_DELAY",
+            "SUPPLIER_RELIABILITY_RISK"
+          ]
+        },
+        "observation": {
+          "facts": {
+            "supplierUnreliable": true,
+            "stockDays": 1,
+            "demandDays": 3,
+            "productionAtRisk": false,
+            "routeBlocked": true,
+            "alternativeRoute": false,
+            "alternateSupplier": false,
+            "complianceRecord": false,
+            "qualityAlert": false,
+            "customerAtRisk": false,
+            "reserveStock": false
+          },
+          "concepts": [
+            {
+              "id": "SUPPLIER_RELIABILITY_RISK",
+              "strength": 0.9
+            },
+            {
+              "id": "SHIPMENT_DELAY",
+              "strength": 0.9
+            }
+          ],
+          "bindings": [
+            {
+              "roleId": "SUPPLIER",
+              "value": "train-supplier_supplier"
+            },
+            {
+              "roleId": "SHIPMENT",
+              "value": "train-supplier_shipment"
+            },
+            {
+              "roleId": "FACILITY",
+              "value": "train-supplier_facility"
+            },
+            {
+              "roleId": "PURCHASE_ORDER",
+              "value": "train-supplier_purchase_order"
+            },
+            {
+              "roleId": "CUSTOMER",
+              "value": "train-supplier_customer"
+            }
+          ]
+        },
+        "advice": {
+          "agencyIds": [
+            "SUPPLIER_ASSESSMENT",
+            "PROCUREMENT_STRATEGY",
+            "INVENTORY_ASSESSMENT",
+            "LOGISTICS_ASSESSMENT"
+          ]
+        }
+      }
+    ]
+  },
+  "measurements": [
+    {
+      "caseId": "train-supply",
+      "dispatches": 11,
+      "executions": 4,
+      "coverage": 1,
+      "storedActivationEntries": 6
+    },
+    {
+      "caseId": "train-route",
+      "dispatches": 8,
+      "executions": 4,
+      "coverage": 1,
+      "storedActivationEntries": 4
+    },
+    {
+      "caseId": "train-source",
+      "dispatches": 4,
+      "executions": 3,
+      "coverage": 1,
+      "storedActivationEntries": 3
+    },
+    {
+      "caseId": "train-compliance",
+      "dispatches": 2,
+      "executions": 2,
+      "coverage": 1,
+      "storedActivationEntries": 2
+    },
+    {
+      "caseId": "train-customer",
+      "dispatches": 8,
+      "executions": 4,
+      "coverage": 1,
+      "storedActivationEntries": 4
+    },
+    {
+      "caseId": "train-stock",
+      "dispatches": 8,
+      "executions": 4,
+      "coverage": 1,
+      "storedActivationEntries": 4
+    },
+    {
+      "caseId": "train-promise",
+      "dispatches": 4,
+      "executions": 2,
+      "coverage": 1,
+      "storedActivationEntries": 2
+    },
+    {
+      "caseId": "train-supplier",
+      "dispatches": 7,
+      "executions": 4,
+      "coverage": 1,
+      "storedActivationEntries": 4
+    }
+  ]
+}

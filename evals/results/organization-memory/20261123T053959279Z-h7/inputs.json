@@ -1,0 +1,2450 @@
+{
+  "formationCases": [
+    {
+      "id": "train-supply",
+      "class": "related",
+      "description": "Supplier failure with production shortage",
+      "requiredFindings": [
+        "supplier-risk",
+        "inventory-impact",
+        "production-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-supply_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-supply_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-supply_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-supply_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-supply_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-route",
+      "class": "related",
+      "description": "Blocked route and low stock",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option",
+        "inventory-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.9
+          },
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.9
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-route_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-route_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-route_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-route_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-route_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-source",
+      "class": "related",
+      "description": "Unreliable supplier and verified alternative",
+      "requiredFindings": [
+        "supplier-risk",
+        "alternate-source",
+        "compliance-verified"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": true,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.9
+          },
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-source_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-source_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-source_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-source_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-source_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-compliance",
+      "class": "related",
+      "description": "Pending verification for alternative supplier",
+      "requiredFindings": [
+        "supplier-verification-needed"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.9
+          },
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-compliance_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-compliance_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-compliance_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-compliance_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-compliance_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-customer",
+      "class": "related",
+      "description": "Production recovery needed to meet commitment",
+      "requiredFindings": [
+        "production-impact",
+        "customer-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-customer_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-customer_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-customer_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-customer_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-customer_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-stock",
+      "class": "related",
+      "description": "Inventory shortage with reserve stock",
+      "requiredFindings": [
+        "inventory-impact",
+        "production-impact",
+        "buffer-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-stock_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-stock_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-stock_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-stock_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-stock_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-promise",
+      "class": "related",
+      "description": "Route closure threatens delivery promise",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option",
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.9
+          },
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-promise_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-promise_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-promise_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-promise_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-promise_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "train-supplier",
+      "class": "related",
+      "description": "Supplier reliability problem delays replenishment",
+      "requiredFindings": [
+        "supplier-risk",
+        "route-risk",
+        "inventory-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.9
+          },
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.9
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "train-supplier_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "train-supplier_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "train-supplier_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "train-supplier_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "train-supplier_customer"
+          }
+        ]
+      }
+    }
+  ],
+  "heldOutCases": [
+    {
+      "id": "related-supply",
+      "class": "related",
+      "description": "Weaker supply signals with an actionable reserve",
+      "requiredFindings": [
+        "supplier-risk",
+        "inventory-impact",
+        "production-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 0,
+          "demandDays": 5,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.35
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.35
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.35
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-supply_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-supply_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-supply_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-supply_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-supply_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-route",
+      "class": "related",
+      "description": "Partial route evidence but rerouting is possible",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option",
+        "inventory-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 2,
+          "demandDays": 6,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.4
+          },
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.4
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-route_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-route_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-route_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-route_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-route_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-source",
+      "class": "related",
+      "description": "Weak alerts for a verified replacement source",
+      "requiredFindings": [
+        "supplier-risk",
+        "alternate-source",
+        "compliance-verified"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": true,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.3
+          },
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.3
+          },
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.3
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-source_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-source_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-source_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-source_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-source_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-compliance",
+      "class": "related",
+      "description": "Alternative still lacks verification",
+      "requiredFindings": [
+        "supplier-verification-needed"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.35
+          },
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.35
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-compliance_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-compliance_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-compliance_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-compliance_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-compliance_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-customer",
+      "class": "related",
+      "description": "Low-intensity production alert threatens a promise",
+      "requiredFindings": [
+        "customer-impact",
+        "production-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.3
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.3
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-customer_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-customer_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-customer_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-customer_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-customer_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-stock",
+      "class": "related",
+      "description": "Shortage can be buffered before production stalls",
+      "requiredFindings": [
+        "inventory-impact",
+        "buffer-option",
+        "production-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 2,
+          "demandDays": 8,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.3
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.3
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-stock_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-stock_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-stock_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-stock_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-stock_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-promise",
+      "class": "related",
+      "description": "Strong closure evidence requires a new route",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option",
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.85
+          },
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.85
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-promise_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-promise_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-promise_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-promise_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-promise_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "related-supplier",
+      "class": "related",
+      "description": "Strong supplier and transport alerts with low stock",
+      "requiredFindings": [
+        "supplier-risk",
+        "route-risk",
+        "inventory-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.8
+          },
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.8
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "related-supplier_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "related-supplier_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "related-supplier_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "related-supplier_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "related-supplier_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-stock",
+      "class": "partial",
+      "description": "Only the stock-risk part of a production episode recurs",
+      "requiredFindings": [
+        "inventory-impact",
+        "production-impact",
+        "buffer-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 1,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.45
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-stock_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-stock_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-stock_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-stock_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-stock_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-route",
+      "class": "partial",
+      "description": "Route obstruction without an inventory-risk signal",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.35
+          },
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.35
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-route_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-route_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-route_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-route_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-route_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-source",
+      "class": "partial",
+      "description": "An alternate source exists but is not verified",
+      "requiredFindings": [
+        "supplier-verification-needed"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-source_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-source_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-source_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-source_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-source_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-quality",
+      "class": "partial",
+      "description": "New quality alert alongside a compliance signal",
+      "requiredFindings": [
+        "quality-hold",
+        "compliance-verified"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": true,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.45
+          },
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.45
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-quality_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-quality_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-quality_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-quality_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-quality_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-customer",
+      "class": "partial",
+      "description": "Commitment risk without production disruption",
+      "requiredFindings": [
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-customer_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-customer_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-customer_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-customer_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-customer_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-production",
+      "class": "partial",
+      "description": "Production-only signal with a replacement option",
+      "requiredFindings": [
+        "production-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": true,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.5
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-production_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-production_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-production_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-production_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-production_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-priority",
+      "class": "partial",
+      "description": "A new urgent promise joins route risk",
+      "requiredFindings": [
+        "route-risk",
+        "customer-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.4
+          },
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-priority_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-priority_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-priority_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-priority_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-priority_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "partial-repeat",
+      "class": "partial",
+      "description": "Recurring supplier concern with a new quality issue",
+      "requiredFindings": [
+        "supplier-risk",
+        "quality-hold"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.5
+          },
+          {
+            "id": "REPEAT_DISRUPTION",
+            "strength": 0.5
+          },
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.5
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "partial-repeat_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "partial-repeat_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "partial-repeat_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "partial-repeat_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "partial-repeat_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-quality",
+      "class": "unrelated",
+      "description": "Standalone quality hold",
+      "requiredFindings": [
+        "quality-hold"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.8
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-quality_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-quality_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-quality_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-quality_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-quality_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-repeat",
+      "class": "unrelated",
+      "description": "Recurring unreliable source",
+      "requiredFindings": [
+        "supplier-risk"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "REPEAT_DISRUPTION",
+            "strength": 0.8
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-repeat_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-repeat_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-repeat_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-repeat_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-repeat_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-priority",
+      "class": "unrelated",
+      "description": "Urgent production recovery",
+      "requiredFindings": [
+        "production-impact",
+        "customer-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.8
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-priority_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-priority_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-priority_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-priority_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-priority_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-repeat-quality",
+      "class": "unrelated",
+      "description": "Repeated faulty deliveries with an available source",
+      "requiredFindings": [
+        "supplier-risk",
+        "quality-hold",
+        "alternate-source"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": true,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "REPEAT_DISRUPTION",
+            "strength": 0.7
+          },
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.7
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-repeat-quality_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-repeat-quality_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-repeat-quality_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-repeat-quality_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-repeat-quality_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-quality-priority",
+      "class": "unrelated",
+      "description": "Quality release required before urgent recovery",
+      "requiredFindings": [
+        "quality-hold",
+        "compliance-verified",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": true,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.6
+          },
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.6
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-quality-priority_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-quality-priority_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-quality-priority_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-quality-priority_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-quality-priority_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-repeat-priority",
+      "class": "unrelated",
+      "description": "An urgent repeat disruption needs a buffer",
+      "requiredFindings": [
+        "supplier-risk",
+        "buffer-option",
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "REPEAT_DISRUPTION",
+            "strength": 0.45
+          },
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.45
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-repeat-priority_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-repeat-priority_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-repeat-priority_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-repeat-priority_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-repeat-priority_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-compound",
+      "class": "unrelated",
+      "description": "Combined quality, recurrence, and urgency",
+      "requiredFindings": [
+        "quality-hold",
+        "supplier-risk",
+        "production-impact",
+        "recovery-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "QUALITY_RISK",
+            "strength": 0.35
+          },
+          {
+            "id": "REPEAT_DISRUPTION",
+            "strength": 0.35
+          },
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.35
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-compound_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-compound_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-compound_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-compound_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-compound_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unrelated-urgent-fallback",
+      "class": "unrelated",
+      "description": "Urgent but weak signal with no production impact",
+      "requiredFindings": [
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "HIGH_PRIORITY_ORDER",
+            "strength": 0.25
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "unrelated-urgent-fallback_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "unrelated-urgent-fallback_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "unrelated-urgent-fallback_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "unrelated-urgent-fallback_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "unrelated-urgent-fallback_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-supply",
+      "class": "misleading",
+      "description": "Supply-shaped signals mask a compliance and quality task",
+      "requiredFindings": [
+        "quality-hold",
+        "compliance-verified"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": true,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-supply_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-supply_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-supply_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-supply_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-supply_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-route",
+      "class": "misleading",
+      "description": "Route-shaped signals persist after rerouting; a commitment and quality review is needed",
+      "requiredFindings": [
+        "quality-hold",
+        "customer-impact"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": true,
+          "customerAtRisk": true,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.4
+          },
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.4
+          },
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-route_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-route_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-route_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-route_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-route_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-source",
+      "class": "misleading",
+      "description": "Sourcing-shaped signals accompany a stock and production problem",
+      "requiredFindings": [
+        "inventory-impact",
+        "production-impact",
+        "buffer-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 0,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.4
+          },
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-source_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-source_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-source_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-source_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-source_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-compliance",
+      "class": "misleading",
+      "description": "Compliance-shaped signals mask a closed transport route",
+      "requiredFindings": [
+        "route-risk",
+        "reroute-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": true,
+          "alternativeRoute": true,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "COMPLIANCE_UNVERIFIED",
+            "strength": 0.4
+          },
+          {
+            "id": "ALTERNATIVE_SUPPLIER_AVAILABLE",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-compliance_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-compliance_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-compliance_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-compliance_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-compliance_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-customer",
+      "class": "misleading",
+      "description": "Commitment-shaped signals accompany an unverified source",
+      "requiredFindings": [
+        "supplier-verification-needed"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-customer_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-customer_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-customer_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-customer_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-customer_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-stock",
+      "class": "misleading",
+      "description": "Inventory signals remain despite ample stock; verification is now required",
+      "requiredFindings": [
+        "supplier-verification-needed"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 20,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": true,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "INVENTORY_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "PRODUCTION_IMPACT",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-stock_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-stock_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-stock_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-stock_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-stock_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-promise",
+      "class": "misleading",
+      "description": "Route and promise signals mask a faulty supplier",
+      "requiredFindings": [
+        "supplier-risk",
+        "quality-hold",
+        "compliance-verified"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": true,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": false,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": true,
+          "qualityAlert": true,
+          "customerAtRisk": false,
+          "reserveStock": false
+        },
+        "concepts": [
+          {
+            "id": "ROUTE_DISRUPTION",
+            "strength": 0.4
+          },
+          {
+            "id": "CUSTOMER_COMMITMENT_RISK",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-promise_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-promise_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-promise_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-promise_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-promise_customer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "misleading-supplier",
+      "class": "misleading",
+      "description": "Supplier-delay signals persist while the actual need is production recovery",
+      "requiredFindings": [
+        "production-impact",
+        "recovery-option",
+        "buffer-option"
+      ],
+      "observation": {
+        "facts": {
+          "supplierUnreliable": false,
+          "stockDays": 10,
+          "demandDays": 3,
+          "productionAtRisk": true,
+          "routeBlocked": false,
+          "alternativeRoute": false,
+          "alternateSupplier": false,
+          "complianceRecord": false,
+          "qualityAlert": false,
+          "customerAtRisk": false,
+          "reserveStock": true
+        },
+        "concepts": [
+          {
+            "id": "SUPPLIER_RELIABILITY_RISK",
+            "strength": 0.4
+          },
+          {
+            "id": "SHIPMENT_DELAY",
+            "strength": 0.4
+          }
+        ],
+        "bindings": [
+          {
+            "roleId": "SUPPLIER",
+            "value": "misleading-supplier_supplier"
+          },
+          {
+            "roleId": "SHIPMENT",
+            "value": "misleading-supplier_shipment"
+          },
+          {
+            "roleId": "FACILITY",
+            "value": "misleading-supplier_facility"
+          },
+          {
+            "roleId": "PURCHASE_ORDER",
+            "value": "misleading-supplier_purchase_order"
+          },
+          {
+            "roleId": "CUSTOMER",
+            "value": "misleading-supplier_customer"
+          }
+        ]
+      }
+    }
+  ],
+  "agencies": [
+    {
+      "id": "SUPPLIER_ASSESSMENT",
+      "threshold": 0.5,
+      "sensitivities": {
+        "SUPPLIER_RELIABILITY_RISK": 0.9,
+        "REPEAT_DISRUPTION": 0.7,
+        "QUALITY_RISK": 0.6,
+        "COMPLIANCE_UNVERIFIED": 0.4
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "CLASSIFY",
+        "COMPARE"
+      ]
+    },
+    {
+      "id": "INVENTORY_ASSESSMENT",
+      "threshold": 0.4,
+      "sensitivities": {
+        "INVENTORY_RISK": 1,
+        "SHIPMENT_DELAY": 0.6,
+        "PRODUCTION_IMPACT": 0.5,
+        "HIGH_PRIORITY_ORDER": 0.3
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "COMPARE"
+      ]
+    },
+    {
+      "id": "LOGISTICS_ASSESSMENT",
+      "threshold": 0.6,
+      "sensitivities": {
+        "SHIPMENT_DELAY": 1,
+        "ROUTE_DISRUPTION": 0.9,
+        "INVENTORY_RISK": 0.4,
+        "HIGH_PRIORITY_ORDER": 0.2
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "CLASSIFY",
+        "COMPARE",
+        "ESCALATE"
+      ]
+    },
+    {
+      "id": "PRODUCTION_ASSESSMENT",
+      "threshold": 0.6,
+      "sensitivities": {
+        "PRODUCTION_IMPACT": 1,
+        "INVENTORY_RISK": 0.7,
+        "HIGH_PRIORITY_ORDER": 0.4,
+        "SHIPMENT_DELAY": 0.4
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "COMPARE",
+        "ESCALATE"
+      ]
+    },
+    {
+      "id": "PROCUREMENT_STRATEGY",
+      "threshold": 0.5,
+      "sensitivities": {
+        "ALTERNATIVE_SUPPLIER_AVAILABLE": 0.9,
+        "SUPPLIER_RELIABILITY_RISK": 0.7,
+        "REPEAT_DISRUPTION": 0.7,
+        "INVENTORY_RISK": 0.4
+      },
+      "supportedOperations": [
+        "COMPARE",
+        "ESCALATE"
+      ]
+    },
+    {
+      "id": "COMPLIANCE_ASSESSMENT",
+      "threshold": 0.7,
+      "sensitivities": {
+        "COMPLIANCE_UNVERIFIED": 1,
+        "QUALITY_RISK": 0.8,
+        "ALTERNATIVE_SUPPLIER_AVAILABLE": 0.4,
+        "SUPPLIER_RELIABILITY_RISK": 0.3
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "CLASSIFY",
+        "ESCALATE"
+      ]
+    },
+    {
+      "id": "RISK_ASSESSMENT",
+      "threshold": 0.6,
+      "sensitivities": {
+        "INVENTORY_RISK": 0.7,
+        "PRODUCTION_IMPACT": 0.8,
+        "QUALITY_RISK": 0.8,
+        "CUSTOMER_COMMITMENT_RISK": 0.6,
+        "REPEAT_DISRUPTION": 0.6
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "COMPARE",
+        "ESCALATE"
+      ]
+    },
+    {
+      "id": "CUSTOMER_COMMITMENT",
+      "threshold": 0.5,
+      "sensitivities": {
+        "CUSTOMER_COMMITMENT_RISK": 0.9,
+        "HIGH_PRIORITY_ORDER": 0.8,
+        "PRODUCTION_IMPACT": 0.6,
+        "SHIPMENT_DELAY": 0.4
+      },
+      "supportedOperations": [
+        "VERIFY",
+        "COMPARE"
+      ]
+    }
+  ],
+  "routingTable": {
+    "SHIPMENT_DELAY": [
+      "LOGISTICS_ASSESSMENT",
+      "INVENTORY_ASSESSMENT"
+    ],
+    "INVENTORY_RISK": [
+      "INVENTORY_ASSESSMENT",
+      "PRODUCTION_ASSESSMENT"
+    ],
+    "SUPPLIER_RELIABILITY_RISK": [
+      "SUPPLIER_ASSESSMENT",
+      "PROCUREMENT_STRATEGY",
+      "RISK_ASSESSMENT"
+    ],
+    "PRODUCTION_IMPACT": [
+      "PRODUCTION_ASSESSMENT",
+      "RISK_ASSESSMENT",
+      "CUSTOMER_COMMITMENT"
+    ],
+    "ALTERNATIVE_SUPPLIER_AVAILABLE": [
+      "PROCUREMENT_STRATEGY",
+      "COMPLIANCE_ASSESSMENT"
+    ],
+    "COMPLIANCE_UNVERIFIED": [
+      "COMPLIANCE_ASSESSMENT"
+    ],
+    "HIGH_PRIORITY_ORDER": [
+      "CUSTOMER_COMMITMENT",
+      "PRODUCTION_ASSESSMENT"
+    ],
+    "REPEAT_DISRUPTION": [
+      "SUPPLIER_ASSESSMENT",
+      "PROCUREMENT_STRATEGY",
+      "RISK_ASSESSMENT"
+    ],
+    "ROUTE_DISRUPTION": [
+      "LOGISTICS_ASSESSMENT"
+    ],
+    "QUALITY_RISK": [
+      "COMPLIANCE_ASSESSMENT",
+      "SUPPLIER_ASSESSMENT",
+      "RISK_ASSESSMENT"
+    ],
+    "CUSTOMER_COMMITMENT_RISK": [
+      "CUSTOMER_COMMITMENT",
+      "RISK_ASSESSMENT"
+    ]
+  },
+  "assessmentBudget": 4
+}

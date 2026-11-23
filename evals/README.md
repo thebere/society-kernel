@@ -6,22 +6,22 @@ The [hypothesis register](../docs/research-hypotheses.md) defines claims. [Resea
 
 ## Current state
 
-No comparative suite or result-publishing command is implemented yet. The [first protocol](protocols/organization-memory.md) is a design draft for reinstatement and transfer. The [results index](results/README.md) records the current evidence state. Existing correctness tests remain with the kernel in [`ts/src`](../ts/src/).
+The [organization-memory suite](suites/organization-memory/README.md) implements the first four-condition H7 comparison under [protocol v1](protocols/organization-memory.md). Its held-out run and exact replication produced mixed evidence, retained in the [results index](results/README.md). Existing mechanism correctness tests remain with the kernel in [`ts/src`](../ts/src/); evaluation machinery tests live beside the suite.
 
 ## Layout and ownership
 
 | Location | Responsibility | Current state |
 | --- | --- | --- |
-| `protocols/` | Versioned experiment definitions linked to hypothesis IDs. | Initial memory protocol drafted. |
-| `suites/<suite-id>/` | Future runner, treatment/baseline adapters, scoring, fixtures or dataset manifests, and suite-specific instructions. | Created when a suite is implemented. |
-| `results/<suite-id>/<run-id>/` | Future immutable run artifacts, including failed and incomplete attempts. | No runs recorded. |
-| `results/README.md` | Comparative results index linking exact runs and their limits. | Explicitly records no comparative results. |
+| `protocols/` | Versioned experiment definitions linked to hypothesis IDs. | Memory protocol v1 registered before scored execution. |
+| `suites/<suite-id>/` | Runner, treatment/baseline adapters, scoring, fixtures, registration, and suite instructions. | Organization-memory suite v1 implemented. |
+| `results/<suite-id>/<run-id>/` | Immutable completed, failed, and incomplete run artifacts. | Initial H7 run and exact deterministic replication preserved. |
+| `results/README.md` | Comparative results index linking exact runs and their limits. | Refreshed from retained run manifests/summaries. |
 
 These locations define a reporting contract, not an existing generic evaluation framework. Suites may use the appropriate language/runtime for their architectures while producing an auditable record.
 
 ## Run artifact contract
 
-Each future runner should allocate a unique run directory and write:
+Each runner allocates a unique run directory and writes:
 
 - `manifest.json`: run and suite IDs, protocol version/hash, hypothesis IDs, workstream and domain, source/baseline revisions, dirty-source snapshot reference/hash, input/configuration hashes, exact invocation, seeds, budgets, repetitions, and environment/dependency/model/tool versions.
 - `measurements.jsonl`: per-case, per-condition, per-repetition observations with case IDs, completion/error status, measured outcomes, costs, and trace references. Failed and missing observations retain their status instead of disappearing.
@@ -29,6 +29,8 @@ Each future runner should allocate a unique run directory and write:
 - `report.md`: a readable account of the comparison, observations, scope, limitations, and links to the protocol and raw artifacts. Label generated observations and researcher interpretation distinctly.
 
 Preserve the configuration and accessible input/source snapshots needed to reproduce the run, or a manifest pointing to versioned datasets and access requirements. Protocol revisions and actual artifacts remain identifiable after later code changes. Re-runs get new run IDs.
+
+The first suite additionally writes `cases.json` (the readable JSON counterpart of raw measurements), `inputs.json`, `memories.json`, and `source-snapshot.json`. The snapshot retains dirty executable sources/configuration with a manifest hash. Deterministic replications also write `replication.json`. The registered source/input hashes must match before scoring; the two retained runs are repeatability checks on one dataset, not independent samples.
 
 ## Reporting lifecycle
 

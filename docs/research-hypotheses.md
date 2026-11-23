@@ -12,7 +12,7 @@ Remembering and reinstating a previously useful organization of capabilities can
 
 The claim concerns the contribution of remembered organization while current facts, available capabilities, and access to content memory are controlled. An improvement must be established against suitable alternatives and include the cost of consolidation, retrieval, and reinstatement. Replaying a previous solution regardless of current evidence does not establish this thesis.
 
-H1–H6 make the mechanism precise; H7–H12 investigate its usefulness and limits. H13–H19 extend the investigation to agents, persistence, scale, and other domains. T1 has no comparative evaluation result yet.
+H1–H6 make the mechanism precise; H7–H12 investigate its usefulness and limits. H13–H19 extend the investigation to agents, persistence, scale, and other domains. The [first H7 comparison](../evals/results/organization-memory/20261123T053956445Z-h7/report.md) supplies mixed, narrowly scoped evidence; it does not establish T1 generally.
 
 ## Status and interpretation
 
@@ -20,8 +20,9 @@ Implementation status and empirical support are separate. **Operationalized** me
 
 | Entries | Implementation or investigation status | Evidence boundary |
 | --- | --- | --- |
-| H1–H6 | Operationalized | Deterministic mechanisms, including agency-local execution and explicit reinstatement Effects, have unit/integration coverage; comparative usefulness untested. |
-| H7–H19, H21 | Proposed | No completed comparative evaluation recorded. |
+| H1–H6 | Operationalized | Deterministic mechanisms have unit/integration coverage; this is distinct from the scoped H7 comparison. |
+| H7 | Investigated — mixed under protocol v1 | First held-out deterministic supply-chain comparison completed and exactly replicated; general benefit is not established. |
+| H8–H19, H21 | Proposed | No completed investigation of these separate claims recorded. |
 | H20 | Methodological requirement | Defines the comparison obligation across all workstreams. |
 
 Each evaluation scopes its claims to a named task distribution, domain, implementation, and resource budget. The entries below define the proposition and what would weaken it; executable protocols define the actual comparisons and decision criteria. Sources of inspiration are catalogued in [References](references.md), including Minsky's proposals and comparison architectures. Historical terminology alone supplies no empirical support for Society Kernel.
@@ -72,7 +73,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** Recalled organization can prime current capability recruitment while current evidence remains able to confirm, modify, override, or reject that prior.
 
-**Boundary:** Operationalized. Recalled K-line agency activations contribute `stored activation × structural similarity` through ordinary Workspace activation Effects. Recall remains read-only; the caller selects one match and applies its Effects outside the Society cycle. Recruitment remains governed by current thresholds and evidence, including subsequent inhibition. Utility weighting, multi-memory aggregation, role/operation reinstatement, and threshold/sensitivity changes are not implemented. See the [unit tests](../ts/src/memory/reinstatement.test.ts), [integration tests](../ts/src/integration/reinstatement.integration.test.ts), and [mechanism contract](architecture.md#explicit-reinstatement). Comparative benefit remains untested under H7; these correctness tests do not establish H8 negative-transfer results.
+**Boundary:** Operationalized. Recalled K-line agency activations contribute `stored activation × structural similarity` through ordinary Workspace activation Effects. Recall remains read-only; the caller selects one match and applies its Effects outside the Society cycle. Recruitment remains governed by current thresholds and evidence, including subsequent inhibition. Utility weighting, multi-memory aggregation, role/operation reinstatement, and threshold/sensitivity changes are not implemented. See the [unit tests](../ts/src/memory/reinstatement.test.ts), [integration tests](../ts/src/integration/reinstatement.integration.test.ts), and [mechanism contract](architecture.md#explicit-reinstatement). Comparative evidence is recorded separately under H7; these correctness tests do not establish H8 negative-transfer results.
 
 **Counterevidence:** Memory forces the old coalition despite contradictory evidence, imports old literal referents, or cannot be distinguished from replay.
 
@@ -80,7 +81,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** Reinstating relevant organization improves task quality, useful coalition formation, or computational efficiency on structurally related episodes relative to the same system without assistance and to suitable retrieval alternatives.
 
-**Boundary:** Proposed. The contribution must exceed access to the old episode or its content alone. Cost and quality are evaluated separately under the [methods](research-methods.md).
+**Boundary:** Investigated — mixed under [protocol v1](../evals/protocols/organization-memory.md), run [20261123T053956445Z-h7](../evals/results/organization-memory/20261123T053956445Z-h7/report.md), with an [exact deterministic replication](../evals/results/organization-memory/20261123T053959279Z-h7/replication.json). Eight formation episodes and 32 held-out cases were compared across no memory, organization memory, direct routing, and episode retrieval, using conditional mock findings and a shared four-assessment budget. Organization memory improved mean coverage over no memory (0.6823 versus 0.4271), with more executions, but direct routing and episode retrieval each achieved 0.8177. Related and partial cases reached full coverage in all three assisted/routing conditions; organization memory used fewer assessments on partial cases, with additional formation/recall/reinstatement overhead. These results do not establish advantage beyond ordinary episode reuse or general usefulness. Cost and quality remain separate under the [methods](research-methods.md). Misleading-case observations inform H8/H11 without completing either investigation.
 
 **Counterevidence:** Benefits disappear under matched conditions, fail on held-out episodes, are explained by extra information or tuning, or are outweighed by retrieval and adaptation costs.
 
@@ -91,6 +92,8 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 **Boundary:** Proposed. Abstention, weak recall, confidence, competing memories, inhibition, and current-evidence override are candidate controls, not implemented guarantees.
 
 **Counterevidence:** Misleading memories systematically degrade task quality or make recovery more expensive than the no-memory and retrieval baselines within the protocol's declared tolerance.
+
+**Evidence context:** H7 protocol v1 motivates H8 as the next empirical investigation: characterize quality loss or additional work from inappropriate reinstatement relative to abstention or a memory-free alternative. Its high-similarity failures and unrelated-case fallback gap are distinct; failure with no recalled prior is not evidence of harmful reinstatement. H8 remains proposed and uninvestigated. See the [findings synthesis](research-findings.md#failure-boundary).
 
 ### H9: Utility-guided memory
 
@@ -115,6 +118,8 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 **Boundary:** Proposed. Weighted concepts, role/relational structure, activation geometry, graph similarity, learned representations, and metric learning are alternatives to investigate.
 
 **Counterevidence:** Better apparent similarity fails to improve downstream behavior, depends on memorized identities, or imposes cost and opacity without corresponding benefit.
+
+**Evidence context:** H7's high-overlap failures motivate asking whether structural resemblance predicts organization reusability. First characterize the failure under H8; richer similarity remains a later empirical candidate, not an assumed remedy. See [derived research questions](research-findings.md#derived-research-questions).
 
 ### H12: Learning sensitivities and thresholds
 

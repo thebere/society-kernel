@@ -232,7 +232,7 @@ autonomous agent frameworks
 
 This keeps the mechanism inspectable while the core hypothesis is being investigated.
 
-Reinstatement now lets a recalled organization contribute an activation prior through ordinary Workspace Effects. Current evidence and thresholds still govern recruitment. The next research task is **comparative transfer evaluation**: determining whether that influence improves processing relative to suitable alternatives.
+Reinstatement lets a recalled organization contribute an activation prior through ordinary Workspace Effects. Current evidence and thresholds still govern recruitment. The first comparative evaluation produced mixed evidence: the [evaluation status](#evaluation-status) links its scope and limitations.
 
 See the [documentation map](docs/README.md) and [hypothesis register](docs/research-hypotheses.md) for the research claims and their current boundaries.
 
@@ -353,9 +353,10 @@ Check imports and lint rules, or apply safe fixes:
 ```bash
 npm run lint
 npm run lint:fix
+npm run typecheck
 ```
 
-Biome checks the TypeScript sources and project JSON configuration. Formatting is disabled to keep these commands focused on import organization and lint fixes.
+Biome checks kernel and evaluation sources plus project JSON configuration. Formatting is disabled to keep lint commands focused on import organization and safe fixes. Typechecking covers the kernel, tests, and evaluation TypeScript.
 
 The test suite verifies individual kernel mechanisms and their end-to-end composition. The [canonical supply-chain integration test](ts/src/integration/society-cycle.integration.test.ts) covers Workspace construction, propagation, recruitment, dispatch, separate agency-local execution, causal tracing, K-line consolidation, and read-only structural recall after literal entity substitution. Local operation results are deterministic fixtures, with no automatic feedback into Workspace.
 
@@ -365,9 +366,9 @@ The [reinstatement integration tests](ts/src/integration/reinstatement.integrati
 
 ## Evaluation status
 
-Unit tests verify individual mechanisms and invariants; integration tests verify their composition. No comparative performance result is currently claimed.
+The first held-out H7 comparison is complete, with an exact deterministic replication. **Result: mixed under protocol v1.** Organization memory improved coverage over no memory and matched full coverage on related and partial cases, using fewer executions on partial cases than both routing alternatives. Both alternatives performed better overall, with the coverage gap in unrelated cases; misleading matches also exposed wasted work. H8 negative-transfer characterization is next. This is a small deterministic mock-domain result, not general validation.
 
-Read-only structural recall and explicit activation reinstatement are implemented. Comparative transfer experiments remain future work.
+See [research findings](docs/research-findings.md) for the current interpretation and open questions, and the [first result report](evals/results/organization-memory/20261123T053956445Z-h7/report.md) for observations. The [protocol](evals/protocols/organization-memory.md), [suite](evals/suites/organization-memory/README.md), and [results index](evals/results/README.md) preserve the design and both runs. Unit and integration checks remain separate from comparative evidence.
 
 See the [research hypotheses](docs/research-hypotheses.md), [research methods](docs/research-methods.md), [evaluation protocol](evals/protocols/organization-memory.md), and [evaluation results](evals/results/README.md).
 

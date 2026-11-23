@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
+    "typecheck": "tsc --project tsconfig.json",
+    "eval:organization-memory": "node evals/suites/organization-memory/cli.mjs",
     "lint": "biome check --error-on-warnings .",
     "lint:fix": "biome check --write --error-on-warnings ."
   },

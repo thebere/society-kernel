@@ -419,7 +419,7 @@ Do not treat a recalled organization as the answer.
 
 Memory should act as a prior whose influence remains contestable by current evidence.
 
-The current contribution rule is `stored agency activation × structural similarity`. Preserve ordinary activation saturation, inhibition, and current recruitment thresholds. Utility, roles, and operations do not modulate reinstatement, and no multi-memory policy is defined. Changes to this rule require explicit research direction. H7 comparative evaluation is the next research task; passing H6 tests does not establish transfer benefit.
+The current contribution rule is `stored agency activation × structural similarity`. Preserve ordinary activation saturation, inhibition, and current recruitment thresholds. Utility, roles, and operations do not modulate reinstatement, and no multi-memory policy is defined. Changes to this rule require explicit research direction. H7 has an initial mixed comparison under protocol v1; consult the [results index](evals/results/README.md) before proposing follow-up work. Passing H6 tests does not establish transfer benefit.
 
 ---
 
