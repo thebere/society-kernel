@@ -4,9 +4,9 @@ This reference describes current implementation behavior. The [hypothesis regist
 
 ## Implementation boundary
 
-Implemented mechanisms are typed primitives, immutable Workspace transitions, polyneme propagation, threshold-based recruitment, operation dispatch, an explicit agency-local execution contract with typed results, a single deterministic Society cycle with a causal trace, K-line consolidation, and concept-set structural recall. Execution supports synchronous and asynchronous local handlers; current capability implementations are deterministic test fixtures.
+Implemented mechanisms are typed primitives, immutable Workspace transitions, polyneme propagation, threshold-based recruitment, operation dispatch, an explicit agency-local execution contract with typed results, a single deterministic Society cycle with a causal trace, K-line consolidation, concept-set structural recall, and explicit similarity-scaled agency-activation reinstatement. Execution supports synchronous and asynchronous local handlers; current capability implementations are deterministic test fixtures.
 
-Fact-to-concept interpretation, real external capability adapters, runtime scheduling, execution-result feedback, repeated settling cycles, K-line reinstatement, learned parameters, and durable memory storage are not implemented. Recall is read-only. The deterministic core requires no LLM, embedding model, vector database, or autonomous agent framework; explicit inputs and mechanisms keep its behavior inspectable.
+Fact-to-concept interpretation, real external capability adapters, runtime scheduling, execution-result feedback, repeated settling cycles, learned parameters, and durable memory storage are not implemented. Recall is read-only; reinstatement derives Effects for explicit caller application. The deterministic core requires no LLM, embedding model, vector database, or autonomous agent framework; explicit inputs and mechanisms keep its behavior inspectable.
 
 ## Source modules
 
@@ -15,7 +15,7 @@ Fact-to-concept interpretation, real external capability adapters, runtime sched
 | [`primitives/`](../ts/src/primitives/) | Cross-cutting signal/identity types and bounded activation. |
 | [`workspace/`](../ts/src/workspace/) | Current state, immutable role bindings, and Effect application. |
 | [`society/`](../ts/src/society/) | Stable agency contracts, propagation, recruitment, dispatch, local execution, and cycle traces. |
-| [`memory/`](../ts/src/memory/) | K-line types, signatures, consolidation, similarity, and read-only recall. |
+| [`memory/`](../ts/src/memory/) | K-line types, signatures, consolidation, similarity, read-only recall, and reinstatement Effects. |
 | [`domains/supply-chain/`](../ts/src/domains/supply-chain/) | Concrete vocabulary, canonical identity order, agency configuration, and deterministic runtime fixtures. |
 | [`integration/`](../ts/src/integration/) | The canonical test composing the mechanisms with the reference domain. |
 
@@ -113,9 +113,43 @@ Execution stays outside `runCycle()`, so the cycle remains synchronous and its c
 
 For example, two situations sharing five concepts out of a six-concept union score `5 / 6`, regardless of different supplier or shipment referents. Recall at a minimum of `0.8` returns the memory without changing the current Workspace. This arithmetic example establishes no task-performance or transfer advantage.
 
+## Explicit reinstatement
+
+[`reinstatementEffects(match)`](../ts/src/memory/reinstatement.ts) is a pure transformation of one caller-selected `KLineMatch` into `readonly ActivateAgency[]`:
+
+```text
+recall → KLineMatch → reinstatementEffects()
+                         ↓
+memory contribution = stored agency activation × structural similarity
+                         ↓
+ActivateAgency Effects → applyEffect() → Workspace → normal recruitment
+```
+
+Each non-zero contribution passes through the existing branded `activation()` invariant and becomes `{ action: "activate_agency", agencyId, amount }`. Zero similarity, zero stored activation, and an empty stored coalition produce no corresponding Effects. Effects preserve the K-line's stored activation order, which consolidation already canonicalizes. The function uses no domain vocabulary or runtime registry.
+
+The caller chooses a match and explicitly applies the returned Effects. For example, after selecting `match`:
+
+```ts
+const effects = reinstatementEffects(match);
+const workspaceWithPrior = effects.reduce(applyEffect, workspace);
+const result = runCycle(workspaceWithPrior, agencies);
+```
+
+This composition applies the prior before current concept propagation. Sequencing remains a caller decision; reinstatement neither applies its own Effects nor retrieves memories, recruits agencies, dispatches operations, or executes handlers. `recall ≠ reinstatement`, `reinstatement ≠ recruitment`, and `reinstatement ≠ replay`.
+
+Ordinary Effect application accumulates and saturates activation at 1. Subsequent current contributions can reinforce it, and ordinary inhibition can reduce it to zero. Current thresholds and supported operations remain authoritative. Stored utility, role identities, operations, signature contents, and K-line ID do not modulate a supplied match's activation contributions; similarity is supplied by recall. No literal referents, facts, concepts, bindings, isonomes, or dispatches are reinstated.
+
+The derivation does not validate the current capability configuration. It preserves remembered agency IDs; Effect application accepts them, while recruitment or the cycle fails explicitly if the current configuration is missing an activated agency. Capability migration/invalidation remains H15 work. Utility weighting (H9), multi-memory aggregation/competition/decay (H10), role or operation reinstatement, threshold/sensitivity modification, and learned reinstatement are not implemented.
+
+Reinstatement stays outside `runCycle()` and its causal trace. The returned Effects expose the memory contributions, but the existing cycle trace records only subsequent propagation, Effect application, recruitment, and dispatch. There is no additional trace framework or hidden memory schedule.
+
+Correctness and integration tests operationalize H6: memory can influence current organization without forcing the stored coalition. They establish no comparative benefit under H7 and do not investigate H8 negative transfer; zero-overlap and inhibition checks verify mechanism semantics only.
+
 ## Verification and use
 
 Focused tests beside the implementation cover boundaries, ordering, non-mutation, configuration failures, accumulation, dispatch, local sync/async execution, consolidation, and recall. See [`cycle.test.ts`](../ts/src/society/cycle.test.ts), [`execution.test.ts`](../ts/src/society/execution.test.ts), [`kline.test.ts`](../ts/src/memory/kline.test.ts), and the related mechanism tests.
+
+[`reinstatement.test.ts`](../ts/src/memory/reinstatement.test.ts) verifies contribution arithmetic, zero contributions, stored order, metadata independence, determinism, and frozen-input purity. The [reinstatement integration tests](../ts/src/integration/reinstatement.integration.test.ts) cover consolidation-to-recall-to-prior composition across changed literal referents, threshold-governed recruitment, evidence reinforcement/inhibition, saturation, unrelated situations, repeatability, and missing configuration.
 
 The [canonical supply-chain integration test](../ts/src/integration/society-cycle.integration.test.ts) composes Workspace Effects, a cycle, separate local execution, consolidation, and read-only recall. Its deterministic COMPARE handlers live in [`domains/supply-chain/runtimes.ts`](../ts/src/domains/supply-chain/runtimes.ts); episode-specific facts, bindings, and signals remain local to the test. It asserts activations, coalition and dispatch ordering, causal trace phases, distinct agency-specific COMPARE results, stored organization, changed role referents, and non-mutation. Its role is composition correctness, not transfer evaluation.
 

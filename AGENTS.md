@@ -401,7 +401,7 @@ Consult [H6](docs/research-hypotheses.md#h6-reinstatement) and the [organization
 
 # Reinstatement guardrail
 
-The next major mechanism is K-line reinstatement.
+H6 K-line reinstatement is implemented as explicit activation Effects outside `runCycle()` through [`reinstatementEffects()`](ts/src/memory/reinstatement.ts). Recall remains read-only; reinstatement does not itself apply Effects or recruit agencies.
 
 The intended research question is:
 
@@ -419,7 +419,7 @@ Do not treat a recalled organization as the answer.
 
 Memory should act as a prior whose influence remains contestable by current evidence.
 
-The exact contribution rule must come from the active task specification.
+The current contribution rule is `stored agency activation × structural similarity`. Preserve ordinary activation saturation, inhibition, and current recruitment thresholds. Utility, roles, and operations do not modulate reinstatement, and no multi-memory policy is defined. Changes to this rule require explicit research direction. H7 comparative evaluation is the next research task; passing H6 tests does not establish transfer benefit.
 
 ---
 

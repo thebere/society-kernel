@@ -216,6 +216,7 @@ Implemented:
 - K-line consolidation
 - structural situation signatures
 - deterministic K-line recall
+- explicit similarity-scaled K-line reinstatement through activation Effects
 
 The kernel is currently deterministic and intentionally small.
 
@@ -231,7 +232,7 @@ autonomous agent frameworks
 
 This keeps the mechanism inspectable while the core hypothesis is being investigated.
 
-The next major experiment concerns **reinstatement**: allowing recalled organization to influence a new episode without simply forcing the previous coalition.
+Reinstatement now lets a recalled organization contribute an activation prior through ordinary Workspace Effects. Current evidence and thresholds still govern recruitment. The next research task is **comparative transfer evaluation**: determining whether that influence improves processing relative to suitable alternatives.
 
 See the [documentation map](docs/README.md) and [hypothesis register](docs/research-hypotheses.md) for the research claims and their current boundaries.
 
@@ -358,13 +359,15 @@ Biome checks the TypeScript sources and project JSON configuration. Formatting i
 
 The test suite verifies individual kernel mechanisms and their end-to-end composition. The [canonical supply-chain integration test](ts/src/integration/society-cycle.integration.test.ts) covers Workspace construction, propagation, recruitment, dispatch, separate agency-local execution, causal tracing, K-line consolidation, and read-only structural recall after literal entity substitution. Local operation results are deterministic fixtures, with no automatic feedback into Workspace.
 
+The [reinstatement integration tests](ts/src/integration/reinstatement.integration.test.ts) explicitly apply recalled activation priors and verify normal recruitment, saturation, and current-evidence inhibition. These are mechanism checks, not comparative transfer results.
+
 ---
 
 ## Evaluation status
 
-Unit tests verify individual mechanisms and invariants; the integration test verifies their composition. No comparative performance result is currently claimed.
+Unit tests verify individual mechanisms and invariants; integration tests verify their composition. No comparative performance result is currently claimed.
 
-Read-only structural recall is implemented. K-line reinstatement and comparative transfer experiments remain future work.
+Read-only structural recall and explicit activation reinstatement are implemented. Comparative transfer experiments remain future work.
 
 See the [research hypotheses](docs/research-hypotheses.md), [research methods](docs/research-methods.md), [evaluation protocol](evals/protocols/organization-memory.md), and [evaluation results](evals/results/README.md).
 

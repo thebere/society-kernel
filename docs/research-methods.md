@@ -6,7 +6,7 @@ This document owns the common experimental method. The [hypothesis register](res
 
 Unit tests verify individual mechanism semantics and invariants. Integration tests verify that multiple mechanisms compose according to specification. A demonstration illustrates a mechanism on chosen inputs. A comparative evaluation measures an identified claim against declared alternatives. A cognitive study additionally compares predictions with empirical observations. Passing one level does not establish the next.
 
-The tests under [`ts/src`](../ts/src/) support mechanism correctness; the [canonical supply-chain integration test](../ts/src/integration/society-cycle.integration.test.ts) verifies their end-to-end composition through consolidation and read-only recall. No completed comparative evaluation is currently recorded in the [results index](../evals/results/README.md). In particular, read-only recall cannot demonstrate a reinstatement benefit.
+The tests under [`ts/src`](../ts/src/) support mechanism correctness; the [canonical supply-chain integration test](../ts/src/integration/society-cycle.integration.test.ts) verifies their end-to-end composition through consolidation and read-only recall. The [reinstatement integration tests](../ts/src/integration/reinstatement.integration.test.ts) verify explicit activation priors, ordinary recruitment, and current-evidence override. No completed comparative evaluation is currently recorded in the [results index](../evals/results/README.md). Neither read-only recall nor passing reinstatement correctness tests demonstrates a comparative transfer benefit.
 
 ## Comparison design
 

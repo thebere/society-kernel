@@ -20,8 +20,8 @@ Implementation status and empirical support are separate. **Operationalized** me
 
 | Entries | Implementation or investigation status | Evidence boundary |
 | --- | --- | --- |
-| H1–H5 | Operationalized | Deterministic mechanisms, including agency-local execution, have unit/integration coverage; comparative usefulness untested. |
-| H6–H19, H21 | Proposed | No completed comparative evaluation recorded. |
+| H1–H6 | Operationalized | Deterministic mechanisms, including agency-local execution and explicit reinstatement Effects, have unit/integration coverage; comparative usefulness untested. |
+| H7–H19, H21 | Proposed | No completed comparative evaluation recorded. |
 | H20 | Methodological requirement | Defines the comparison obligation across all workstreams. |
 
 Each evaluation scopes its claims to a named task distribution, domain, implementation, and resource budget. The entries below define the proposition and what would weaken it; executable protocols define the actual comparisons and decision criteria. Sources of inspiration are catalogued in [References](references.md), including Minsky's proposals and comparison architectures. Historical terminology alone supplies no empirical support for Society Kernel.
@@ -72,7 +72,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** Recalled organization can prime current capability recruitment while current evidence remains able to confirm, modify, override, or reject that prior.
 
-**Boundary:** Proposed; this is the next mechanism experiment. Current recall does not change the Workspace. Activation injection, threshold reduction, sensitivity changes, operation priming, and role priming are distinct candidate reinstatement mechanisms; none is selected or implemented by this entry.
+**Boundary:** Operationalized. Recalled K-line agency activations contribute `stored activation × structural similarity` through ordinary Workspace activation Effects. Recall remains read-only; the caller selects one match and applies its Effects outside the Society cycle. Recruitment remains governed by current thresholds and evidence, including subsequent inhibition. Utility weighting, multi-memory aggregation, role/operation reinstatement, and threshold/sensitivity changes are not implemented. See the [unit tests](../ts/src/memory/reinstatement.test.ts), [integration tests](../ts/src/integration/reinstatement.integration.test.ts), and [mechanism contract](architecture.md#explicit-reinstatement). Comparative benefit remains untested under H7; these correctness tests do not establish H8 negative-transfer results.
 
 **Counterevidence:** Memory forces the old coalition despite contradictory evidence, imports old literal referents, or cannot be distinguished from replay.
 
