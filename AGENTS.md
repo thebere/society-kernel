@@ -785,6 +785,8 @@ Performance claims require measurements.
 
 Keep commits conceptually coherent.
 
+Completed evaluation result artifacts under `evals/results/` are immutable evidence records. Do not modify or delete an existing completed run to improve or change a result. Corrections require an explicit invalidation record or a new run with a new run identifier; preserve the original artifacts.
+
 Prefer commits that correspond to:
 
 ```text
