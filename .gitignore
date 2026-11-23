@@ -1,2 +1,4 @@
 node_modules
 .vitest
+.codex/project-context.md
+.research/
