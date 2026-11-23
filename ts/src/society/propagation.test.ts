@@ -1,10 +1,11 @@
 import { describe, expect, test } from 'vitest';
-import { activation } from './activation';
-import { type Agency, agencies as configuredAgencies } from './agency';
-import { applyEffect } from './effect';
+import { agencies as configuredAgencies } from "../domains/supply-chain/agencies";
+import { activation } from '../primitives/activation';
+import type { Polyneme } from '../primitives/types';
+import { applyEffect } from '../workspace/effect';
+import { createEmptyWorkspace, type WorkspaceState } from '../workspace/workspace';
+import type { Agency } from "./agency";
 import { propagation } from './propagation';
-import type { Polyneme } from './types';
-import { createEmptyWorkspace, type WorkspaceState } from './workspace';
 
 describe('polyneme propagation', () => {
   test('one polyneme generates an activation effect for one sensitive agency', () => {

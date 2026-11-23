@@ -1,6 +1,6 @@
-import type { Activation } from "./activation";
+import type { Activation } from "../primitives/activation";
+import type { AgencyId, Isonome, OperationId } from "../primitives/types";
 import type { Agency } from "./agency";
-import type { AgencyId, Isonome, OperationId } from "./types";
 
 export type AgencyOperationDispatch = {
   agencyId: AgencyId;

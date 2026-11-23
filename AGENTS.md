@@ -250,7 +250,7 @@ Dispatch is not agency execution.
 
 ## Agency-local execution and results
 
-[`executeDispatch()`](ts/src/core/execution.ts) invokes a separate agency-local handler after dispatch. Stable `Agency` configuration remains distinct from executable `AgencyRuntime` implementations; declared `supportedOperations` remain authoritative even when a handler exists.
+[`executeDispatch()`](ts/src/society/execution.ts) invokes a separate agency-local handler after dispatch. Stable `Agency` configuration remains distinct from executable `AgencyRuntime` implementations; declared `supportedOperations` remain authoritative even when a handler exists.
 
 Handlers receive readonly caller-owned context and return a local value synchronously or asynchronously. They must not mutate Workspace, dispatch, configuration, or the runtime registry. Execution wraps the value in an `AgencyOperationResult` identifying the agency and operation. Missing configuration, unsupported operations, missing runtimes, and missing handlers fail explicitly; handler failures propagate.
 
@@ -680,6 +680,8 @@ The implementation and current task specification take precedence over historica
 ---
 
 # Documentation structure
+
+Source responsibilities under `ts/src/`: `primitives/` owns cross-cutting types and numeric invariants; `workspace/` owns current state and Effects; `society/` owns current capability organization and execution; `memory/` owns remembered organization; `domains/` owns concrete experimental vocabulary/configuration; `integration/` composes them in tests. Keep these boundaries separate. The existing closed identity unions retain a type-only dependency from primitives to the supply-chain vocabulary; see the [source map](docs/architecture.md#source-modules) before attempting a second domain.
 
 Read the [project README](README.md) and [documentation map](docs/README.md), then the documents relevant to the task:
 

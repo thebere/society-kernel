@@ -32,7 +32,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** A shared concept signal can produce different activation contributions across specialized capabilities through local sensitivities.
 
-**Boundary:** The deterministic propagation implementation establishes the mechanics. It does not establish that the sensitivities are learned, cognitively realistic, or better than direct routing. See [`propagation.test.ts`](../ts/src/core/propagation.test.ts).
+**Boundary:** The deterministic propagation implementation establishes the mechanics. It does not establish that the sensitivities are learned, cognitively realistic, or better than direct routing. See [`propagation.test.ts`](../ts/src/society/propagation.test.ts).
 
 **Counterevidence:** Contributions fail to reflect the configured signal strengths and sensitivities, or produce inconsistent or unexplained activation.
 
@@ -40,7 +40,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** Multiple active concepts can jointly recruit a capability coalition through accumulated activation and local thresholds, without a procedure explicitly choosing the complete coalition.
 
-**Boundary:** Accumulation and recruitment are implemented; usefulness relative to a centralized selection policy remains untested. See [`recruitment.test.ts`](../ts/src/core/recruitment.test.ts) and [`cycle.test.ts`](../ts/src/core/cycle.test.ts).
+**Boundary:** Accumulation and recruitment are implemented; usefulness relative to a centralized selection policy remains untested. See [`recruitment.test.ts`](../ts/src/society/recruitment.test.ts) and [`cycle.test.ts`](../ts/src/society/cycle.test.ts).
 
 **Counterevidence:** Recruitment is inconsistent with accumulated activation and thresholds. Equal or better direct routing with less machinery weakens the architectural motivation rather than the arithmetic implementation.
 
@@ -48,7 +48,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** A shared operation identity can coordinate recruited, capable agencies while allowing each agency to implement the operation according to its competence.
 
-**Boundary:** Shared operation dispatch and agency-local execution are implemented and tested using deterministic capability implementations, including async handlers. See [`dispatch.test.ts`](../ts/src/core/dispatch.test.ts), [`execution.test.ts`](../ts/src/core/execution.test.ts), and the [canonical integration test](../ts/src/integration/society-cycle.integration.test.ts). This operationalizes the architectural mechanism, not its usefulness relative to ordinary function calls or alternative orchestration. Dispatch, execution, typed results, and Workspace Effects remain distinct; execution results do not automatically change state. Real heterogeneous capabilities remain the proposed investigation under H14.
+**Boundary:** Shared operation dispatch and agency-local execution are implemented and tested using deterministic capability implementations, including async handlers. See [`dispatch.test.ts`](../ts/src/society/dispatch.test.ts), [`execution.test.ts`](../ts/src/society/execution.test.ts), and the [canonical integration test](../ts/src/integration/society-cycle.integration.test.ts). This operationalizes the architectural mechanism, not its usefulness relative to ordinary function calls or alternative orchestration. Dispatch, execution, typed results, and Workspace Effects remain distinct; execution results do not automatically change state. Real heterogeneous capabilities remain the proposed investigation under H14.
 
 **Counterevidence:** The abstraction prevents needed local behavior, routes operations incorrectly, or adds complexity without improving coordination over ordinary function calls or routing.
 
@@ -56,7 +56,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** A completed cycle can be consolidated into a representation of organization without retaining the episode's literal role referents.
 
-**Boundary:** Consolidation stores the concept signature, recruited activations, bound role identities, dispatched operation identities, and caller-supplied utility. It does not identify causal relevance or establish successful transfer. See [`kline.test.ts`](../ts/src/core/kline.test.ts) and [the memory semantics](architecture.md#consolidation-and-structural-recall).
+**Boundary:** Consolidation stores the concept signature, recruited activations, bound role identities, dispatched operation identities, and caller-supplied utility. It does not identify causal relevance or establish successful transfer. See [`kline.test.ts`](../ts/src/memory/kline.test.ts) and [the memory semantics](architecture.md#consolidation-and-structural-recall).
 
 **Counterevidence:** Consolidation depends on literal referents, loses the specified organizational state, or cannot reproduce the same representation from equivalent inputs.
 
@@ -64,7 +64,7 @@ Each evaluation scopes its claims to a named task distribution, domain, implemen
 
 **Claim:** An episode can retrieve organizational memory from a different episode when active concept structure overlaps despite changed literal entities.
 
-**Boundary:** Concept-set signatures and Jaccard recall are implemented and tested in [`kline.test.ts`](../ts/src/core/kline.test.ts). Recall is read-only. Neither richer relational similarity nor transfer benefit is established.
+**Boundary:** Concept-set signatures and Jaccard recall are implemented and tested in [`kline.test.ts`](../ts/src/memory/kline.test.ts). Recall is read-only. Neither richer relational similarity nor transfer benefit is established.
 
 **Counterevidence:** Entity substitution changes recall despite unchanged concept structure, or the defined overlap and ranking rules are violated. Retrieval of operationally inappropriate memories is a further utility question under H8 and H11.
 

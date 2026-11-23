@@ -1,8 +1,4 @@
-// types.ts
-
-import type { Activation } from "./activation";
-
-// Core Ids
+// Reference-domain identities in their existing canonical order.
 export const agencyIds = [
   "SUPPLIER_ASSESSMENT",
   "INVENTORY_ASSESSMENT",
@@ -57,41 +53,3 @@ export const operationIds = [
 ] as const;
 
 export type OperationId = (typeof operationIds)[number];
-
-export type SituationFeatureId = ConceptId;
-export type KLineId = `kline_${string}`;
-
-// Core substates embellished contracts
-export type AgencyActivation = {
-  agencyId: AgencyId;
-  activation: Activation;
-}
-
-export type SituationSignature = {
-	featureIds: readonly SituationFeatureId[];
-};
-
-
-// Core primitives
-export type Polyneme = {
-  kind: 'polyneme';
-  conceptId: ConceptId;
-  strength: Activation;
-};
-
-export type Isonome = {
-  kind: 'isonome',
-  operationId: OperationId;
-  strength: Activation;
-};
-
-export type KLine = {
-  id: KLineId;
-  signature: SituationSignature;
-
-  agencyActivations: readonly AgencyActivation[];
-  roleIds: readonly RoleId[];
-  operationIds: readonly OperationId[];
-
-  utility: Activation;
-};

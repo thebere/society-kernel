@@ -1,6 +1,6 @@
 
+import type { AgencyActivation, Isonome, Polyneme } from "../primitives/types";
 import type { Pronome } from "./pronome";
-import type { AgencyActivation, Isonome, Polyneme } from "./types";
 
 export type WorkspaceState = {
 	readonly facts: Readonly<Record<string, unknown>>;

@@ -6,7 +6,7 @@ The [hypothesis register](../docs/research-hypotheses.md) defines claims. [Resea
 
 ## Current state
 
-No comparative suite or result-publishing command is implemented yet. The [first protocol](protocols/organization-memory.md) is a design draft for reinstatement and transfer. The [results index](results/README.md) records the current evidence state. Existing correctness tests remain with the kernel in [`ts/src/core`](../ts/src/core/).
+No comparative suite or result-publishing command is implemented yet. The [first protocol](protocols/organization-memory.md) is a design draft for reinstatement and transfer. The [results index](results/README.md) records the current evidence state. Existing correctness tests remain with the kernel in [`ts/src`](../ts/src/).
 
 ## Layout and ownership
 

@@ -1,11 +1,13 @@
 import { describe, expect, expectTypeOf, test } from 'vitest';
-import { activation } from './activation';
-import { agencies, type Agency } from './agency';
-import { dispatchIsonome, type AgencyOperationDispatch } from './dispatch';
-import { applyEffect, type Effect } from './effect';
+import { agencies } from "../domains/supply-chain/agencies";
+import { agencyIds, operationIds } from "../domains/supply-chain/types";
+import { activation } from '../primitives/activation';
+import type { AgencyId, Isonome } from "../primitives/types";
+import { applyEffect, type Effect } from '../workspace/effect';
+import { createEmptyWorkspace } from '../workspace/workspace';
+import type { Agency } from "./agency";
+import { type AgencyOperationDispatch, dispatchIsonome } from './dispatch';
 import { recruitAgencyIds } from './recruitment';
-import { agencyIds, operationIds, type AgencyId, type Isonome } from './types';
-import { createEmptyWorkspace } from './workspace';
 
 const verify: Isonome = {
   kind: 'isonome', operationId: 'VERIFY', strength: activation(0.8),

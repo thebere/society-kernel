@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'vitest';
-import { activation } from './activation';
-import { agencies, type Agency } from './agency';
+import { agencies } from "../domains/supply-chain/agencies";
+import { activation } from '../primitives/activation';
+import type { AgencyActivation } from '../primitives/types';
+import type { Agency } from "./agency";
 import { recruitAgencyIds } from './recruitment';
-import type { AgencyActivation } from './types';
 
 describe('recruitAgencyIds', () => {
   test.each([

@@ -1,6 +1,6 @@
-import { type Activation, activation } from "./activation";
+import { type Activation, activation } from "../primitives/activation";
+import type { AgencyId, ConceptId, OperationId, RoleId } from "../primitives/types";
 import { Pronome } from "./pronome";
-import type { AgencyId, ConceptId, OperationId, RoleId } from "./types";
 import type { WorkspaceState } from "./workspace";
 
 const pronomeActions = [

@@ -1,12 +1,13 @@
 import { describe, expect, test } from "vitest";
-import { activation } from "./activation";
-import { agencies, type Agency } from "./agency";
-import { runCycle } from "./cycle";
-import type { Isonome, Polyneme } from "./types";
+import { agencies } from "../domains/supply-chain/agencies";
+import { activation } from "../primitives/activation";
+import type { Isonome, Polyneme } from "../primitives/types";
 import {
   createEmptyWorkspace,
   type WorkspaceState,
-} from "./workspace";
+} from "../workspace/workspace";
+import type { Agency } from "./agency";
+import { runCycle } from "./cycle";
 
 const shipmentDelay: Polyneme = {
   kind: "polyneme",

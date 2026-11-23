@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { activation } from './activation';
+import { activation } from '../primitives/activation';
 import { applyEffect, type Effect } from './effect';
 import { createEmptyWorkspace } from './workspace';
 

@@ -1,5 +1,3 @@
-// activation.ts
-
 export const ACTIVATION_RANGE = [0, 1] as const;
 
 declare const activationSymbol: unique symbol;

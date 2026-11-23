@@ -1,5 +1,5 @@
+import type { AgencyActivation, AgencyId } from "../primitives/types";
 import type { Agency } from "./agency";
-import type { AgencyActivation, AgencyId } from "./types";
 
 export function recruitAgencyIds(
   agencyActivations: readonly AgencyActivation[],

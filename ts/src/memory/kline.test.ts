@@ -3,24 +3,20 @@ import {
   expect,
   test,
 } from "vitest";
-import { activation } from "./activation";
-import type { CycleResult } from "./cycle";
+import { consolidateKLine, deriveSituationSignature } from "../domains/supply-chain/memory";
+import { activation } from "../primitives/activation";
+import type { CycleResult } from "../society/cycle";
+import { Pronome } from "../workspace/pronome";
 import {
-  consolidateKLine,
-  deriveSituationSignature,
-  recallKLines,
-  situationSimilarity,
-} from "./kline";
-import { Pronome } from "./pronome";
+  createEmptyWorkspace,
+  type WorkspaceState,
+} from "../workspace/workspace";
+import { recallKLines, situationSimilarity } from "./kline";
 import { similarity } from "./similarity";
 import type {
   KLine,
   SituationSignature,
 } from "./types";
-import {
-  createEmptyWorkspace,
-  type WorkspaceState,
-} from "./workspace";
 
 describe("deriveSituationSignature", () => {
   test("contains non-zero active concepts only", () => {

@@ -1,4 +1,4 @@
-import type { RoleId } from "./types";
+import type { RoleId } from "../primitives/types";
 
 
 export class Pronome<T>  {

@@ -1,17 +1,18 @@
 import { describe, expect, expectTypeOf, test, vi } from "vitest";
-import { activation } from "./activation";
-import { agencies, type Agency } from "./agency";
-import { dispatchIsonome, type AgencyOperationDispatch } from "./dispatch";
-import type { Effect } from "./effect";
+import { agencies } from "../domains/supply-chain/agencies";
+import { activation } from "../primitives/activation";
+import type { Isonome } from "../primitives/types";
+import type { Effect } from "../workspace/effect";
+import { createEmptyWorkspace, type WorkspaceState } from "../workspace/workspace";
+import type { Agency } from "./agency";
+import { type AgencyOperationDispatch, dispatchIsonome } from "./dispatch";
 import {
-  executeDispatch,
   type AgencyExecutionContext,
   type AgencyOperationHandler,
   type AgencyOperationResult,
   type AgencyRuntime,
+  executeDispatch,
 } from "./execution";
-import type { Isonome } from "./types";
-import { createEmptyWorkspace, type WorkspaceState } from "./workspace";
 
 const compare: Isonome = {
   kind: "isonome", operationId: "COMPARE", strength: activation(0.7),

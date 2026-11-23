@@ -1,5 +1,5 @@
+import type { WorkspaceState } from "../workspace/workspace";
 import type { Agency } from "./agency";
-import type { WorkspaceState } from "./workspace";
 
 
 export class Society {

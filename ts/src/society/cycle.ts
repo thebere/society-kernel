@@ -1,21 +1,21 @@
-import type { Activation } from "./activation";
+import type { Activation } from "../primitives/activation";
+import type {
+  AgencyId,
+  ConceptId,
+  OperationId,
+} from "../primitives/types";
+import {
+  type ActivateAgency,
+  applyEffect,
+} from "../workspace/effect";
+import type { WorkspaceState } from "../workspace/workspace";
 import type { Agency } from "./agency";
 import {
   type AgencyOperationDispatch,
   dispatchIsonome,
 } from "./dispatch";
-import {
-  type ActivateAgency,
-  applyEffect,
-} from "./effect";
 import { propagation } from "./propagation";
 import { recruitAgencyIds } from "./recruitment";
-import type {
-  AgencyId,
-  ConceptId,
-  OperationId,
-} from "./types";
-import type { WorkspaceState } from "./workspace";
 
 export type PolynemePropagationTrace = {
   readonly kind: "polyneme_propagation";

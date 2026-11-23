@@ -1,17 +1,5 @@
-import { type Activation, activation } from "./activation";
-import type { AgencyId, ConceptId, OperationId } from "./types";
-
-type Sensitivities = Readonly<
-  Partial<Record<ConceptId, Activation>>
->;
-
-export type Agency = {
-  id: AgencyId;
-  threshold: Activation;
-  sensitivities: Sensitivities;
-  supportedOperations: readonly OperationId[];
-};
-
+import { activation } from "../../primitives/activation";
+import type { Agency } from "../../society/agency";
 
 export const agencies: readonly Agency[] = [
   {

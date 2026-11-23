@@ -1,20 +1,20 @@
-import type { Activation } from "./activation";
-import type { CycleResult } from "./cycle";
+import type { Activation } from "../primitives/activation";
+import type { AgencyActivation, AgencyId, ConceptId, OperationId, RoleId } from "../primitives/types";
+import type { CycleResult } from "../society/cycle";
+import type { WorkspaceState } from "../workspace/workspace";
 import {
-  agencyIds,
-  conceptIds,
-  operationIds,
-  roleIds,
-  type AgencyActivation,
-  type KLine,
-  type KLineId,
-  type SituationSignature,
-} from "./types";
-import {
-  similarity,
   type Similarity,
+  similarity,
 } from "./similarity";
-import type { WorkspaceState } from "./workspace";
+import type { KLine, KLineId, SituationSignature } from "./types";
+
+/** Canonical membership and ordering supplied by the reference-domain binding. */
+export type KLineIdentityOrder = {
+  readonly agencyIds: readonly AgencyId[];
+  readonly conceptIds: readonly ConceptId[];
+  readonly roleIds: readonly RoleId[];
+  readonly operationIds: readonly OperationId[];
+};
 
 export type KLineMatch = {
   readonly kline: KLine;
@@ -29,6 +29,7 @@ export type KLineMatch = {
  */
 export function deriveSituationSignature(
   workspace: WorkspaceState,
+  conceptIds: readonly ConceptId[],
 ): SituationSignature {
   const activeConceptIds = new Set(
     workspace.polynemes
@@ -53,6 +54,7 @@ export function consolidateKLine(
   id: KLineId,
   cycle: CycleResult,
   utility: Activation,
+  { agencyIds, conceptIds, roleIds, operationIds }: KLineIdentityOrder,
 ): KLine {
   const recruitedAgencyIds = new Set(
     cycle.recruitedAgencyIds,
@@ -113,7 +115,7 @@ export function consolidateKLine(
   return {
     id,
     signature:
-      deriveSituationSignature(cycle.workspace),
+      deriveSituationSignature(cycle.workspace, conceptIds),
 
     agencyActivations,
     roleIds: consolidatedRoleIds,

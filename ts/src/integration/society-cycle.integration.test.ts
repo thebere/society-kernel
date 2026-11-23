@@ -1,22 +1,16 @@
 import { describe, expect, test } from "vitest";
-import { activation } from "../core/activation";
-import { agencies } from "../core/agency";
-import { runCycle } from "../core/cycle";
-import { applyEffect, type Effect } from "../core/effect";
-import { executeDispatch, type AgencyRuntime } from "../core/execution";
-import {
-  consolidateKLine,
-  deriveSituationSignature,
-  recallKLines,
-} from "../core/kline";
-import { similarity } from "../core/similarity";
-import {
-  type AgencyId,
-  type Polyneme,
-  type RoleId,
-  agencyIds,
-} from "../core/types";
-import { createEmptyWorkspace } from "../core/workspace";
+import { agencies } from "../domains/supply-chain/agencies";
+import { consolidateKLine, deriveSituationSignature } from "../domains/supply-chain/memory";
+import { runtimes } from "../domains/supply-chain/runtimes";
+import { agencyIds } from "../domains/supply-chain/types";
+import { recallKLines } from "../memory/kline";
+import { similarity } from "../memory/similarity";
+import { activation } from "../primitives/activation";
+import type { AgencyId, Polyneme, RoleId } from "../primitives/types";
+import { runCycle } from "../society/cycle";
+import { executeDispatch } from "../society/execution";
+import { applyEffect, type Effect } from "../workspace/effect";
+import { createEmptyWorkspace } from "../workspace/workspace";
 
 describe("canonical supply-chain episode integration", () => {
   test("composes a cycle and local execution, then consolidates and recalls organization without changing a new episode", async () => {
@@ -151,13 +145,19 @@ describe("canonical supply-chain episode integration", () => {
       cursor += event.effects.length;
     }
     expect(cycle.trace.slice(cursor, cursor + coalition.length)).toEqual(
-      coalition.map(agencyId => ({
-        kind: "agency_recruitment",
-        agencyId,
-        activation: expect.closeTo(activationByAgency[agencyId], 12),
-        threshold: agencies.find(agency => agency.id === agencyId)!.threshold,
-        recruited: true,
-      })),
+      coalition.map(agencyId => {
+        const agency = agencies.find(agency => agency.id === agencyId);
+        if (!agency) {
+          throw new Error(`Missing agency configuration: ${agencyId}`);
+        }
+        return {
+          kind: "agency_recruitment",
+          agencyId,
+          activation: expect.closeTo(activationByAgency[agencyId], 12),
+          threshold: agency.threshold,
+          recruited: true,
+        };
+      }),
     );
     cursor += coalition.length;
     expect(cycle.trace.slice(cursor)).toEqual([
@@ -170,15 +170,6 @@ describe("canonical supply-chain episode integration", () => {
     // These constant async implementations are architectural fixtures, not
     // supply-chain analysis. Execute every COMPARE request; the other shared
     // operations remain requests until a caller explicitly executes them.
-    const runtimes: readonly AgencyRuntime[] = [
-      { agencyId: "SUPPLIER_ASSESSMENT", operations: { COMPARE: async () => ({ dimension: "supplier", preferred: "supplier_beta" }) } },
-      { agencyId: "INVENTORY_ASSESSMENT", operations: { COMPARE: async () => ({ dimension: "inventory", preferred: "reserve_stock" }) } },
-      { agencyId: "LOGISTICS_ASSESSMENT", operations: { COMPARE: async () => ({ dimension: "route", preferred: "route_north" }) } },
-      { agencyId: "PRODUCTION_ASSESSMENT", operations: { COMPARE: async () => ({ dimension: "production", preferred: "reschedule" }) } },
-      { agencyId: "PROCUREMENT_STRATEGY", operations: { COMPARE: async () => ({ dimension: "sourcing", preferred: "dual_source" }) } },
-      { agencyId: "RISK_ASSESSMENT", operations: { COMPARE: async () => ({ dimension: "risk", preferred: "review_exposure" }) } },
-      { agencyId: "CUSTOMER_COMMITMENT", operations: { COMPARE: async () => ({ dimension: "commitment", preferred: "review_date" }) } },
-    ];
     const cycleSnapshot = structuredClone(cycle);
     const compareDispatches = cycle.dispatches.filter(dispatch => dispatch.operationId === "COMPARE");
     const results = await Promise.all(compareDispatches.map(dispatch =>

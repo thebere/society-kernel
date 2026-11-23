@@ -1,7 +1,7 @@
+import type { AgencyId, OperationId } from "../primitives/types";
+import type { WorkspaceState } from "../workspace/workspace";
 import type { Agency } from "./agency";
 import type { AgencyOperationDispatch } from "./dispatch";
-import type { AgencyId, OperationId } from "./types";
-import type { WorkspaceState } from "./workspace";
 
 export type AgencyExecutionContext = {
   readonly workspace: WorkspaceState;

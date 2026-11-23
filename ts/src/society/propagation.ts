@@ -1,7 +1,7 @@
-import { activation } from "./activation";
+import { activation } from "../primitives/activation";
+import type { Polyneme } from "../primitives/types";
+import type { ActivateAgency } from "../workspace/effect";
 import type { Agency } from "./agency";
-import type { ActivateAgency } from "./effect";
-import type { Polyneme } from "./types";
 
 export function propagation(polyneme: Polyneme, agencies: readonly Agency[]): ActivateAgency[] {
   return agencies.flatMap<ActivateAgency>((agency) => {

@@ -347,6 +347,15 @@ Run the test suite:
 npm test -- --run
 ```
 
+Check imports and lint rules, or apply safe fixes:
+
+```bash
+npm run lint
+npm run lint:fix
+```
+
+Biome checks the TypeScript sources and project JSON configuration. Formatting is disabled to keep these commands focused on import organization and lint fixes.
+
 The test suite verifies individual kernel mechanisms and their end-to-end composition. The [canonical supply-chain integration test](ts/src/integration/society-cycle.integration.test.ts) covers Workspace construction, propagation, recruitment, dispatch, separate agency-local execution, causal tracing, K-line consolidation, and read-only structural recall after literal entity substitution. Local operation results are deterministic fixtures, with no automatic feedback into Workspace.
 
 ---
