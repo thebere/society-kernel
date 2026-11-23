@@ -1,12 +1,12 @@
 import type { Activation } from "./activation";
 import type { Agency } from "./agency";
 import {
-  dispatchIsonome,
   type AgencyOperationDispatch,
+  dispatchIsonome,
 } from "./dispatch";
 import {
-  applyEffect,
   type ActivateAgency,
+  applyEffect,
 } from "./effect";
 import { propagation } from "./propagation";
 import { recruitAgencyIds } from "./recruitment";
